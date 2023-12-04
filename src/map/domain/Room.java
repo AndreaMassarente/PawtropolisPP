@@ -69,4 +69,12 @@ public class Room {
     public void setNpc(List<Animal> npc) {
         this.npc = npc;
     }
+
+    public void addItem(Item item){
+        items.add(item);
+    }
+
+    public void addNpc(Animal npc){
+        this.npc.add(npc);
+    }
 }
