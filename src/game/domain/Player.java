@@ -22,4 +22,8 @@ public class Player {
     public void setHealthPoints(int healthPoints) {
         this.healthPoints = healthPoints;
     }
+
+    public Bag getMyBag() {
+        return myBag;
+    }
 }
