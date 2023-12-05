@@ -21,8 +21,10 @@ public class MapController {
         currentRoom = map.get(1);
     }
 
+
     public Map<Integer, Room> generateMap(){
         Map<Integer, Room> map1 = new HashMap<>();
+
         //Creazine delle stanze
         Room room1 = new Room(1, "Basement", "You’re in a dark, cramped place", 0, 2, 3, 6);
         Room room2 = new Room(2, "Thermal Baths", "You are in a warm place, there is a lot of fog and hot water gaiser", 1, 0, 0, 0);
@@ -71,7 +73,27 @@ public class MapController {
         room11.addItem(items.get(5));
         room11.addItem(items.get(6));
 
+        map1.put(1,room1);
+        map1.put(2,room2);
+        map1.put(3,room3);
+        map1.put(4,room4);
+        map1.put(5,room5);
+        map1.put(6,room6);
+        map1.put(7,room7);
+        map1.put(8,room8);
+        map1.put(9,room9);
+        map1.put(10,room10);
+        map1.put(11,room11);
+        map1.put(12,room12);
         return map1;
+
     }
 
+    public Map<Integer, Room> getMap() {
+        return map;
+    }
+
+    public void printKey(){
+        System.out.println(map.keySet());
+    }
 }
