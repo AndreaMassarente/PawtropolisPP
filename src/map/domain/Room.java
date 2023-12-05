@@ -4,6 +4,7 @@ import animals.domain.Animal;
 import game.domain.Item;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Room {
@@ -77,7 +78,34 @@ public class Room {
         items.add(item);
     }
 
+    public void removeItem(Item item){ items.remove(item);}
+
     public void addNpc(Animal npc){
         this.npc.add(npc);
+    }
+
+    public String getRoomDescription(){
+        String npcDescription = new String();
+        String itemsDescription = new String();
+
+        for (Animal animal: npc){
+            npcDescription += animal.getName() + ", " + animal.getClass().getSimpleName() + "\n";
+        }
+
+        for (Item item: items){
+            itemsDescription += item.getName() +"\n";
+        }
+
+        return "You are in Room " + getId() +  "\n" + getDescription() + "\nItems:\n" + itemsDescription
+                +"\nNCP:\n" + npcDescription + "\n";
+
+    }
+
+    public String getItemInRoom(){
+        String itemsDescription = new String();
+        for (Item item: items){
+            itemsDescription += item.getName() +"\n";
+        }
+        return itemsDescription;
     }
 }
