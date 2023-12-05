@@ -5,9 +5,9 @@ public class Player {
     private int healthPoints;
     private Bag myBag;
 
-    public Player(String name, int healthPoints) {
+    public Player(String name) {
         this.name = name;
-        this.healthPoints = healthPoints;
+        healthPoints = 10;
         myBag = new Bag();
     }
 
