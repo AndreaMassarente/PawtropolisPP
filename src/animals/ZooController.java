@@ -24,6 +24,7 @@ public class ZooController {
         addAnimal(new Eagle("Debby", "Insect", 6, LocalDate.of(2021,5,2),5,30,1));
         addAnimal(new Armadillo("Miki","Ants",3,LocalDate.of(2021,4,16),6,4,0.5));
         addAnimal(new Armadillo("Simon","Apple",4,LocalDate.of(2019,3,15),7,7,0.7));
+        addAnimal(new Lion("Joffry", "Human",  6, LocalDate.of(2021,11,21), 30,30, 2 ));
     }
     public <T extends Animal> void addAnimal(T animal){
         allAnimal.computeIfAbsent(animal.getClass(), e -> new ArrayList<>()).add(animal);
