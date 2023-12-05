@@ -3,6 +3,7 @@ package map.domain;
 import animals.domain.Animal;
 import game.domain.Item;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Room {
@@ -24,6 +25,8 @@ public class Room {
         this.s = s;
         this.w = w;
         this.e = e;
+        items = new ArrayList<>();
+        npc = new ArrayList<>();
     }
 
     public int getId() {
