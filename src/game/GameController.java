@@ -17,7 +17,6 @@ public class GameController {
 
     public void runGame() {
         MapController mapController = new MapController();
-        mapController.printKey();
         Room currentRoom = entry;
         boolean gameEnded = false;
 
@@ -28,11 +27,10 @@ public class GameController {
             input = InputController.readString();
             switch(input){
                 case "look":
-                    System.out.println("You are in Room " + currentRoom.getId() +  "\n" + currentRoom.getDescription() + "\nItems: " + currentRoom.getItems()
-                            +"\nNCP: " + currentRoom.getNpc());
+                    System.out.println(currentRoom.getRoomDescription());
                     break;
                 case "bag":
-                    System.out.println(player.getMyBag().getItems());
+                    System.out.println(player.getMyBag().getItemsInBag());
                     break;
                 case "go":
                     System.out.println("Choose direction: n, s, e, w");
@@ -74,27 +72,35 @@ public class GameController {
                     }
                     break;
                 case "get":
-                    System.out.println("Choose item to take:\n" + currentRoom.getItems());
+                    System.out.println("Choose item to take:\n" + currentRoom.getItemInRoom());
                     System.out.print(">");
-                    Item chosenItem = currentRoom.getItems()
+                    String inputItemToTake = InputController.readString();
+                    Item chosenItemToTake = currentRoom.getItems()
                             .stream()
-                            .filter(i -> i.getName().equals(InputController.readString()))
+                            .filter(i -> i.getName().equals(inputItemToTake))
                             .findFirst()
                             .orElseGet(() -> null);
-                    if(chosenItem != null){
-                        //Metodo in Room per rimozione item
+                    if(chosenItemToTake != null){
+                        player.getMyBag().addItemInBag(chosenItemToTake);
+                        currentRoom.removeItem(chosenItemToTake);
                     }
                     break;
                 case "drop":
-
+                    System.out.println("Choose item to drop:\n" + player.getMyBag().getItemsInBag());
+                    System.out.print(">");
+                    String inputItemToDrop = InputController.readString();
+                    Item chosenItemToDrop = player.getMyBag()
+                            .getItems()
+                            .stream()
+                            .filter(i -> i.getName().equals(inputItemToDrop))
+                            .findFirst()
+                            .orElseGet(() -> null);
+                    if(chosenItemToDrop != null){
+                        currentRoom.addItem(chosenItemToDrop);
+                        player.getMyBag().removeItemFromBag(chosenItemToDrop);
+                    }
                     break;
-
             }
-            /*
-             * Inserire qui la gestione degli altri comandi
-             */
-
-
             if (input.equals("exit")) {
                 gameEnded = true;
             }
