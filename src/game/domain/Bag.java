@@ -33,4 +33,31 @@ public class Bag {
     public void setItems(List<Item> items) {
         this.items = items;
     }
+
+    public String getItemsInBag(){
+        String itemsInBag = new String();
+        if(items.isEmpty()){
+            return "The bag is empty";
+        }
+        for (Item item : items) {
+            itemsInBag += item.getName() + "\n";
+        }
+        return itemsInBag;
+    }
+
+    public void addItemInBag(Item item){
+        if(item.getSpaceInBag() <= currentFreeSlots){
+            items.add(item);
+            currentFreeSlots -= item.getSpaceInBag();
+        }
+        else{
+            System.out.println("No enough space in bag.");
+        }
+    }
+
+    public void removeItemFromBag(Item item){
+        items.remove(item);
+        currentFreeSlots += item.getSpaceInBag();
+    }
+
 }
