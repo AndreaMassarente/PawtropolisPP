@@ -1,2 +1,5 @@
-package map;public class direction {
+package map.utils;
+
+public class direction {
+
 }

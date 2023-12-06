@@ -1,8 +1,8 @@
-package game.domain;
+package game.model;
 
 import game.console.InputController;
 import map.MapController;
-import map.domain.Room;
+import map.model.Room;
 
 public class Player {
     private final String name;

@@ -1,6 +1,6 @@
 import game.GameController;
-import game.domain.Player;
-import map.domain.Room;
+import game.model.Player;
+import map.model.Room;
 
 public class Application {
     public static void main(String[] args) {

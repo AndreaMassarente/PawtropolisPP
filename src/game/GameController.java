@@ -1,10 +1,9 @@
 package game;
 
 import game.console.InputController;
-import game.domain.Item;
-import game.domain.Player;
+import game.model.Player;
 import map.MapController;
-import map.domain.Room;
+import map.model.Room;
 
 public class GameController {
     private final Room entry;

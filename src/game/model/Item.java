@@ -1,4 +1,4 @@
-package game.domain;
+package game.model;
 
 public class Item {
     //bug fixed

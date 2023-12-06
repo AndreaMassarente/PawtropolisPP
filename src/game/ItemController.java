@@ -1,6 +1,6 @@
 package game;
 
-import game.domain.Item;
+import game.model.Item;
 
 import java.util.ArrayList;
 import java.util.List;

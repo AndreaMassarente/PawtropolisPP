@@ -1,11 +1,11 @@
 package map;
 
 import animals.ZooController;
-import animals.domain.Animal;
-import animals.domain.AnimalNotFound;
+import animals.model.Animal;
+import animals.exception.AnimalNotFound;
 import game.ItemController;
-import game.domain.Item;
-import map.domain.Room;
+import game.model.Item;
+import map.model.Room;
 
 import java.util.ArrayList;
 import java.util.HashMap;
