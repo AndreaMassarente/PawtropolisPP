@@ -1,4 +1,6 @@
-package animals.domain;
+package animals.exception;
+
+import animals.model.Animal;
 
 public class SpeciesNotFound extends Throwable{
     private final Class<? extends Animal> animal;

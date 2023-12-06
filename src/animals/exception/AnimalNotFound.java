@@ -1,4 +1,4 @@
-package animals.domain;
+package animals.exception;
 
 public class AnimalNotFound extends  Throwable{
 }

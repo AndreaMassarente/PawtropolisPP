@@ -1,4 +1,4 @@
-package animals.domain;
+package animals.model;
 
 import java.time.LocalDate;
 import java.util.Objects;

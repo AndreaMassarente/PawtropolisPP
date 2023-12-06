@@ -2,7 +2,16 @@ package animals;
 
 
 
-import animals.domain.*;
+import animals.model.*;
+import animals.exception.AnimalNotFound;
+import animals.exception.SpeciesNotFound;
+import animals.exception.SpecificTraitNotFound;
+import animals.model.tailed.AnimalWithTail;
+import animals.model.tailed.implementation.Armadillo;
+import animals.model.tailed.implementation.Lion;
+import animals.model.tailed.implementation.Tiger;
+import animals.model.winged.AnimalWithWings;
+import animals.model.winged.implementation.Eagle;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -34,7 +43,7 @@ public class ZooController {
 
 
     //Ritorno di tutti gli animali dello zoo
-    public List<Animal> getAnimalsList() throws AnimalNotFound{
+    public List<Animal> getAnimalsList() throws AnimalNotFound {
         return allAnimal.values().
                 stream()
                 .flatMap(Collection::stream)
@@ -70,7 +79,7 @@ public class ZooController {
 
     //Metodi per ricerca in base a tratti specifici
     //TODO Cambia il ritorno del metodo (e anche il parametro passato) con la generics T
-    private <T extends Animal> List<T> findAnimalsByTrait(Class<T> animal) throws SpecificTraitNotFound{
+    private <T extends Animal> List<T> findAnimalsByTrait(Class<T> animal) throws SpecificTraitNotFound {
         List<? extends  Animal> animals =  allAnimal.values()
                 .stream()
                 .flatMap(Collection::stream)
