@@ -1,7 +1,6 @@
 package game.domain;
 
 import game.console.InputController;
-import map.MapController;
 import map.domain.Room;
 
 public class Player {
