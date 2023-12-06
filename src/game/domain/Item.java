@@ -1,7 +1,7 @@
 package game.domain;
 
 public class Item {
-    //bug risolto
+    //bug fixed
     private final String name;
     private final String description;
     private final int spaceInBag;
