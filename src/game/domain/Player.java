@@ -7,7 +7,7 @@ import map.domain.Room;
 public class Player {
     private final String name;
     private int healthPoints;
-    private Bag myBag;
+    private final Bag myBag;
 
     public Player(String name) {
         this.name = name;

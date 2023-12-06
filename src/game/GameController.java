@@ -15,6 +15,7 @@ public class GameController {
         this.entry = entry;
         this.player = player;
         mapController = new MapController();
+        //Ciao
     }
 
     public void runGame() {
