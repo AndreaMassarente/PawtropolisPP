@@ -31,38 +31,38 @@ public class Player {
         return myBag;
     }
 
-    public Room go(MapController mapController, Room currentRoom){
+    /* public Room go(MapController mapController, Room currentRoom){
         System.out.println("Choose direction: n, s, e, w");
         System.out.print(">");
         String input = InputController.readString();
         switch (input){
             case "n":
-                if(currentRoom.getN() != 0){
-                    return mapController.getMap().get(currentRoom.getN());
+                if(currentRoom.getNorth() != 0){
+                    return mapController.getMap().get(currentRoom.getNorth());
                 }
                 else{
                     System.out.println("There's no room here ");
                     return null;
                 }
             case "s":
-                if(currentRoom.getS() != 0){
-                    return mapController.getMap().get(currentRoom.getS());
+                if(currentRoom.getSouth() != 0){
+                    return mapController.getMap().get(currentRoom.getSouth());
                 }
                 else {
                     System.out.println("There's no room here ");
                     return null;
                 }
             case "w":
-                if(currentRoom.getW() != 0){
-                    return mapController.getMap().get(currentRoom.getW());
+                if(currentRoom.getWest() != 0){
+                    return mapController.getMap().get(currentRoom.getWest());
                 }
                 else{
                     System.out.println("There's no room here ");
                     return null;
                 }
             case "e":
-                if(currentRoom.getE() != 0){
-                    return mapController.getMap().get(currentRoom.getE());
+                if(currentRoom.getEast() != 0){
+                    return mapController.getMap().get(currentRoom.getEast());
                 }
                 else{
                     System.out.println("There's no room here ");
@@ -72,7 +72,7 @@ public class Player {
                 System.out.println("Invalid direction.");
                 return null;
         }
-    }
+    } */
 
     public Item get(Room currentRoom){
         System.out.println("Choose item to take:\n" + currentRoom.getItemInRoom());

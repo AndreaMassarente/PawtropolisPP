@@ -26,7 +26,7 @@ public class MapController {
         Map<Integer, Room> map1 = new HashMap<>();
 
         //Creazine delle stanze
-        Room room1 = new Room(1, "Basement", "You’re in a dark, cramped place", 0, 2, 3, 6);
+        /*Room room1 = new Room(1, "Basement", "You’re in a dark, cramped place", 0, 2, 3, 6);
         Room room2 = new Room(2, "Thermal Baths", "You are in a warm place, there is a lot of fog and hot water gaiser", 1, 0, 0, 0);
         Room room3 = new Room(3, "Cave", "You’re in a dark cave, you hear a lot of chilling noises", 4, 0, 5, 1);
         Room room4 = new Room(4, "Mausoleum", "You’re in front of a grave, but it’s too big to be a normal person", 0, 3, 0, 0);
@@ -37,7 +37,7 @@ public class MapController {
         Room room9 = new Room(9, "Desert", "You ended up in a desert, the air is hot and the place seems hostile", 0, 8, 0, 10);
         Room room10 = new Room(10, "Mountain", "You are on the top of a very high mountain, there is snow everywhere, the air is fresh", 0, 0, 9, 11);
         Room room11 = new Room(11, "Treasure Room", "You've never seen so much wealth in one place", 0, 12, 10, 0);
-        Room room12 = new Room(12, "Boos Room", "This place is unlike any you have encountered, the calmness that seems to be there snows you", 11,0, 0, 0);
+        Room room12 = new Room(12, "Boos Room", "This place is unlike any you have encountered, the calmness that seems to be there snows you", 11,0, 0, 0); */
 
         //Aggiunta Npc nelle stanze
         ZooController zooController = new ZooController();
@@ -48,7 +48,7 @@ public class MapController {
         } catch (AnimalNotFound e){
             System.err.println("No Npc found!!");
         }
-        room2.addNpc(animals.get(0));
+        /* room2.addNpc(animals.get(0));
         room4.addNpc(animals.get(1));
         room5.addNpc(animals.get(2));
         room5.addNpc(animals.get(3));
@@ -56,13 +56,13 @@ public class MapController {
         room6.addNpc(animals.get(5));
         room8.addNpc(animals.get(6));
         room11.addNpc(animals.get(7));
-        room12.addNpc(animals.get(8));
+        room12.addNpc(animals.get(8)); */
 
         //Aggiunta oggetti nelle stanze
         ItemController itemController = new ItemController();
         itemController.generateItems();
         List<Item> items = itemController.getItems();
-        room3.addItem(items.get(0));
+        /* room3.addItem(items.get(0));
         room3.addItem(items.get(2));
         room6.addItem(items.get(1));
         room6.addItem(items.get(4));
@@ -84,7 +84,7 @@ public class MapController {
         map1.put(9,room9);
         map1.put(10,room10);
         map1.put(11,room11);
-        map1.put(12,room12);
+        map1.put(12,room12); */
         return map1;
     }
 

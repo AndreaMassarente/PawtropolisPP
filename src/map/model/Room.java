@@ -7,30 +7,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Room {
-    private final int id;
     private final String name;
     private final String description;
-    private final int n;
-    private final int s;
-    private final int w;
-    private final int e;
+    private Room north;
+    private Room south;
+    private Room west;
+    private Room east;
     private List<Item> items;
     private List<Animal> npc;
 
-    public Room(int id, String name, String description, int n, int s, int w, int e) {
-        this.id = id;
+    public Room(String name, String description, Room north, Room south, Room west, Room east) {
         this.name = name;
         this.description = description;
-        this.n = n;
-        this.s = s;
-        this.w = w;
-        this.e = e;
+        this.north = north;
+        this.south = south;
+        this.west = west;
+        this.east = east;
         items = new ArrayList<>();
         npc = new ArrayList<>();
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getName() {
@@ -41,20 +35,20 @@ public class Room {
         return description;
     }
 
-    public int getN() {
-        return n;
+    public Room getNorth() {
+        return north;
     }
 
-    public int getS() {
-        return s;
+    public Room getSouth() {
+        return south;
     }
 
-    public int getW() {
-        return w;
+    public Room getWest() {
+        return west;
     }
 
-    public int getE() {
-        return e;
+    public Room getEast() {
+        return east;
     }
 
     public List<Item> getItems() {
@@ -95,7 +89,7 @@ public class Room {
             itemsDescription += item.getName() +"\n";
         }
 
-        return "You are in Room " + getId() +  "\n" + getDescription() + "\nItems:\n" + itemsDescription
+        return "You are in " + getName() +  "\n" + getDescription() + "\nItems:\n" + itemsDescription
                 +"\nNCP:\n" + npcDescription + "\n";
 
     }

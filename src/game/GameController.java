@@ -19,7 +19,7 @@ public class GameController {
 
     public void runGame() {
         Room currentRoom = entry;
-        System.out.println(mapController.getMap().get(currentRoom.getE()));
+        System.out.println(mapController.getMap().get(currentRoom.getEast()));
         boolean gameEnded = false;
 
         while(!gameEnded) {
