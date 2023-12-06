@@ -86,6 +86,7 @@ public class MapController {
         map1.put(11,room11);
         map1.put(12,room12);
         return map1;
+
     }
 
     public Map<Integer, Room> getMap() {
