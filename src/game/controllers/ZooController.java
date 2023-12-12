@@ -1,17 +1,17 @@
-package animals;
+package game.model.npc;
 
 
 
-import animals.model.*;
-import animals.exception.AnimalNotFound;
-import animals.exception.SpeciesNotFound;
-import animals.exception.SpecificTraitNotFound;
-import animals.model.tailed.AnimalWithTail;
-import animals.model.tailed.implementation.Armadillo;
-import animals.model.tailed.implementation.Lion;
-import animals.model.tailed.implementation.Tiger;
-import animals.model.winged.AnimalWithWings;
-import animals.model.winged.implementation.Eagle;
+import game.model.npc.model.*;
+import game.model.npc.exception.AnimalNotFound;
+import game.model.npc.exception.SpeciesNotFound;
+import game.model.npc.exception.SpecificTraitNotFound;
+import game.model.npc.model.tailed.AnimalWithTail;
+import game.model.npc.model.tailed.implementation.Armadillo;
+import game.model.npc.model.tailed.implementation.Lion;
+import game.model.npc.model.tailed.implementation.Tiger;
+import game.model.npc.model.winged.AnimalWithWings;
+import game.model.npc.model.winged.implementation.Eagle;
 
 import java.time.LocalDate;
 import java.util.*;

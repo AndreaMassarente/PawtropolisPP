@@ -1,4 +1,4 @@
-package game.console;
+package game.controllers.console;
 
 import java.io.BufferedReader;
 import java.io.IOException;

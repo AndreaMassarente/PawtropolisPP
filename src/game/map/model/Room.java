@@ -59,9 +59,23 @@ public class Room {
         this.npc.remove(npc);
     }
 
+    public Room getConnectedRoomByDirection(Direction direction){
+        return connectedRooms.get(direction);
+    }
+
+    public void addConnectedRoom(Direction direction, Room room){
+        connectedRooms.put(direction, room);
+    }
+
     public String getRoomDescription(){
         String npcDescription;
         String itemsDescription;
+        String connectedRoom;
+
+        connectedRoom = connectedRooms.entrySet()
+                .stream()
+                .map(e -> e.getKey().getName() + ": " + e.getValue().getName() + ", " )
+                .collect(Collectors.joining());
 
         if(!npc.isEmpty()){
             npcDescription = npc.stream()
@@ -84,12 +98,8 @@ public class Room {
         }
 
         return "You are in " + getName() +  "\n" + getDescription() + "\nItems:\n" + itemsDescription
-                +"\nNCP:\n" + npcDescription + "\n";
+                +"\nNCP:\n" + npcDescription + "\n" + "Connected rooms: \n" + connectedRoom + "\n";
 
-    }
-
-    public void addConnectedRoom(Direction direction, Room room){
-        connectedRooms.put(direction, room);
     }
 
     public String getItemInRoom(){
@@ -104,5 +114,18 @@ public class Room {
         else {
             return  "No items in this room";
         }
+    }
+
+    public Item getItemFromInput(String input) {
+        Item currentItem = null;
+        String itemName;
+        String nameToLowerCase = input.trim().toLowerCase();
+        for (Item item : items){
+            itemName = item.getName().trim().toLowerCase();
+            if(itemName.equals(nameToLowerCase)){
+                currentItem = item;
+            }
+        }
+        return currentItem;
     }
 }

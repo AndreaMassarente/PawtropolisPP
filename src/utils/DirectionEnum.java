@@ -1,4 +1,4 @@
-package map.utils;
+package utils;
 
 import java.util.Arrays;
 
@@ -14,9 +14,13 @@ public enum Direction {
         this.name = name;
     }
 
-    public static Direction getDirection(String directionFromInput){
+    public String getName() {
+        return name;
+    }
+
+    public static Direction getDirectionFromInput(String input){
         return Arrays.stream(Direction.values())
-                .filter(d -> d.name.equalsIgnoreCase(directionFromInput))
+                .filter(d -> d.name.equalsIgnoreCase(input))
                 .findFirst()
                 .orElse(null);
     }
