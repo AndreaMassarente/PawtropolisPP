@@ -1,4 +1,6 @@
-package animals.domain;
+package game.model.npc.exception;
+
+import game.model.npc.model.Animal;
 
 public class SpeciesNotFound extends Throwable{
     private final Class<? extends Animal> animal;

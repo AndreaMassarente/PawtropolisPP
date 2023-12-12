@@ -1,6 +1,7 @@
-package game.domain;
+package game.model;
 
 public class Item {
+    //bug fixed
     private final String name;
     private final String description;
     private final int spaceInBag;

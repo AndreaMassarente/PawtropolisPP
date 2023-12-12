@@ -1,7 +1,8 @@
-package game.domain;
+package game.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Bag {
     private final int maxSlots;
@@ -35,23 +36,24 @@ public class Bag {
     }
 
     public String getItemsInBag(){
-        String itemsInBag = new String();
-        if(items.isEmpty()){
-            return "The bag is empty";
+        if(!items.isEmpty()){
+            String msg = items.stream()
+                    .map(i -> i.getName() +", ")
+                    .collect(Collectors.joining());
+            return msg.substring(0, msg.length() - 2) + "\n" + currentFreeSlots + " slots remaining" ;
         }
-        for (Item item : items) {
-            itemsInBag += item.getName() + "\n";
-        }
-        return itemsInBag;
+        else
+            return "No items in bag";
     }
 
-    public void addItemInBag(Item item){
+    public boolean addItemInBag(Item item){
         if(item.getSpaceInBag() <= currentFreeSlots){
             items.add(item);
             currentFreeSlots -= item.getSpaceInBag();
+            return true;
         }
         else{
-            System.out.println("No enough space in bag.");
+            return false;
         }
     }
 
@@ -60,4 +62,16 @@ public class Bag {
         currentFreeSlots += item.getSpaceInBag();
     }
 
+    public Item getItemFromInput(String input) {
+        Item currentItem = null;
+        String itemName;
+        String nameToLowerCase = input.trim().toLowerCase();
+        for (Item item : items){
+            itemName = item.getName().trim().toLowerCase();
+            if(itemName.equals(nameToLowerCase)){
+                currentItem = item;
+            }
+        }
+        return currentItem;
+    }
 }

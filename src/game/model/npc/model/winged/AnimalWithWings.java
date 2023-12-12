@@ -1,9 +1,11 @@
-package animals.domain;
+package game.model.npc.model.winged;
+
+import game.model.npc.model.Animal;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
-public abstract class AnimalWithWings extends Animal{
+public abstract class AnimalWithWings extends Animal {
     private double wingspan;
 
     protected AnimalWithWings(String name, String favouriteFood, int age, LocalDate arrivalDate, double weight, double height, double wingspan) {
