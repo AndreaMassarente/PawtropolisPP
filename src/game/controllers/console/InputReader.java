@@ -4,9 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class InputController {
+public class InputReader {
     // non ci interessa istanziare questa classe, ne usiamo solo i metodi static stateless
-    private InputController() {
+    private InputReader() {
     }
 
     public static String readString() {
