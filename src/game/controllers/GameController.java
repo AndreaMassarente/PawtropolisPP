@@ -7,10 +7,11 @@ import java.util.logging.Logger;
 
 public class GameController {
     private final Player player;
-    private InputController inputController;
+    private final InputController inputController;
 
     public GameController(Player player) {
         this.player = player;
+        inputController = new InputController();
     }
 
     public void runGame() {

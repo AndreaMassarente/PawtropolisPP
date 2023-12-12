@@ -7,7 +7,6 @@ import game.model.npc.exception.AnimalNotFound;
 import game.model.npc.exception.SpeciesNotFound;
 import game.model.npc.exception.SpecificTraitNotFound;
 import game.model.npc.model.tailed.AnimalWithTail;
-import game.model.npc.model.tailed.implementation.Armadillo;
 import game.model.npc.model.tailed.implementation.Lion;
 import game.model.npc.model.tailed.implementation.Tiger;
 import game.model.npc.model.winged.AnimalWithWings;
@@ -31,8 +30,8 @@ public class ZooController {
         addAnimal(new Tiger("Sia","Meat", 10, LocalDate.of(2011,8,8),10,20,0.6));
         addAnimal(new Eagle("Tommy","Rodent",5, LocalDate.of(2021, 2, 20),30,400,4));
         addAnimal(new Eagle("Debby", "Insect", 6, LocalDate.of(2021,5,2),5,30,1));
-        addAnimal(new Armadillo("Miki","Ants",3,LocalDate.of(2021,4,16),6,4,0.5));
-        addAnimal(new Armadillo("Simon","Apple",4,LocalDate.of(2019,3,15),7,7,0.7));
+        addAnimal(new Eagle("Miki","Ants",3,LocalDate.of(2021,4,16),6,4,0.5));
+        addAnimal(new Tiger("Simon","Apple",4,LocalDate.of(2019,3,15),7,7,0.7));
         addAnimal(new Lion("Joffry", "Human",  6, LocalDate.of(2021,11,21), 30,30, 2 ));
     }
     public <T extends Animal> void addAnimal(T animal){

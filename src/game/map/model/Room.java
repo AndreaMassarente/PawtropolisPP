@@ -67,16 +67,8 @@ public class Room {
         connectedRooms.put(direction, room);
     }
 
-    public String getRoomDescription(){
+    public String getNpcDescription() {
         String npcDescription;
-        String itemsDescription;
-        String connectedRoom;
-
-        connectedRoom = connectedRooms.entrySet()
-                .stream()
-                .map(e -> e.getKey().getName() + ": " + e.getValue().getName() + ", " )
-                .collect(Collectors.joining());
-
         if(!npc.isEmpty()){
             npcDescription = npc.stream()
                     .map(a -> a.getName() + "(" + a.getClass().getSimpleName() +"), ")
@@ -86,7 +78,11 @@ public class Room {
         else {
             npcDescription = "No Npc in this room";
         }
+        return npcDescription;
+    }
 
+    public String getItemsDescription() {
+        String itemsDescription;
         if(!items.isEmpty()){
             itemsDescription = items.stream()
                     .map(i -> i.getName() +", ")
@@ -96,24 +92,23 @@ public class Room {
         else {
             itemsDescription = "No items in this room";
         }
-
-        return "You are in " + getName() +  "\n" + getDescription() + "\nItems:\n" + itemsDescription
-                +"\nNCP:\n" + npcDescription + "\n" + "Connected rooms: \n" + connectedRoom + "\n";
-
+        return itemsDescription;
     }
 
-    public String getItemInRoom(){
-        String itemsDescription;
+    public String getConnectedRoomsNames() {
+        String connectedRoom;
+        connectedRoom = connectedRooms.entrySet()
+                .stream()
+                .map(e -> e.getKey().getName() + ": " + e.getValue().getName() + ", " )
+                .collect(Collectors.joining());
+        connectedRoom = connectedRoom.substring(0,connectedRoom.length() - 2);
+        return connectedRoom;
+    }
 
-        if(!items.isEmpty()){
-            itemsDescription = items.stream()
-                    .map(i -> i.getName() +", ")
-                    .collect(Collectors.joining());
-            return itemsDescription.substring(0, itemsDescription.length() - 2);
-        }
-        else {
-            return  "No items in this room";
-        }
+    public String getRoomDescription(){
+        return "You are in " + getName() +  "\n" + getDescription() + "\nItems:\n" + getItemsDescription()
+                +"\nNCP:\n" + getNpcDescription() + "\n" + "Connected rooms: \n" + getConnectedRoomsNames() + "\n";
+
     }
 
     public Item getItemFromInput(String input) {
