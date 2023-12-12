@@ -1,6 +1,6 @@
-package animals.model.winged.implementation;
+package game.model.npc.model.winged.implementation;
 
-import animals.model.winged.AnimalWithWings;
+import game.model.npc.model.winged.AnimalWithWings;
 
 import java.time.LocalDate;
 

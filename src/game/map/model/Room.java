@@ -1,8 +1,8 @@
-package map.model;
+package game.map.model;
 
-import animals.model.Animal;
+import game.model.npc.model.Animal;
 import game.model.Item;
-import map.utils.Direction;
+import utils.DirectionEnum;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +14,7 @@ public class Room {
     private final String name;
     private final String description;
 
-    private final Map<Direction, Room> connectedRooms;
+    private final Map<DirectionEnum, Room> connectedRooms;
     private final List<Item> items;
     private final List<Animal> npc;
 
@@ -33,7 +33,7 @@ public class Room {
     public String getDescription() {
         return description;
     }
-    public Map<Direction, Room> getConnectedRooms() {
+    public Map<DirectionEnum, Room> getConnectedRooms() {
         return connectedRooms;
     }
 
@@ -59,11 +59,11 @@ public class Room {
         this.npc.remove(npc);
     }
 
-    public Room getConnectedRoomByDirection(Direction direction){
+    public Room getConnectedRoomByDirection(DirectionEnum direction){
         return connectedRooms.get(direction);
     }
 
-    public void addConnectedRoom(Direction direction, Room room){
+    public void addConnectedRoom(DirectionEnum direction, Room room){
         connectedRooms.put(direction, room);
     }
 

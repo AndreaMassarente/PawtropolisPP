@@ -1,4 +1,4 @@
-package game.model.npc;
+package game.controllers;
 
 
 

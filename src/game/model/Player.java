@@ -1,9 +1,5 @@
 package game.model;
 
-import game.console.InputController;
-import map.MapController;
-import map.model.Room;
-
 public class Player {
     private final String name;
     private int healthPoints;
@@ -29,87 +25,5 @@ public class Player {
 
     public Bag getMyBag() {
         return myBag;
-    }
-
-    /* public Room go(MapController mapController, Room currentRoom){
-        System.out.println("Choose direction: n, s, e, w");
-        System.out.print(">");
-        String input = InputController.readString();
-        switch (input){
-            case "n":
-                if(currentRoom.getNorth() != 0){
-                    return mapController.getMap().get(currentRoom.getNorth());
-                }
-                else{
-                    System.out.println("There's no room here ");
-                    return null;
-                }
-            case "s":
-                if(currentRoom.getSouth() != 0){
-                    return mapController.getMap().get(currentRoom.getSouth());
-                }
-                else {
-                    System.out.println("There's no room here ");
-                    return null;
-                }
-            case "w":
-                if(currentRoom.getWest() != 0){
-                    return mapController.getMap().get(currentRoom.getWest());
-                }
-                else{
-                    System.out.println("There's no room here ");
-                    return null;
-                }
-            case "e":
-                if(currentRoom.getEast() != 0){
-                    return mapController.getMap().get(currentRoom.getEast());
-                }
-                else{
-                    System.out.println("There's no room here ");
-                    return null;
-                }
-            default:
-                System.out.println("Invalid direction.");
-                return null;
-        }
-    } */
-
-    public Item get(Room currentRoom){
-        System.out.println("Choose item to take:\n" + currentRoom.getItemInRoom());
-        System.out.print(">");
-        String inputItemToTake = InputController.readString();
-        Item chosenItemToTake = currentRoom.getItems()
-                .stream()
-                .filter(i -> i.getName().equals(inputItemToTake))
-                .findFirst()
-                .orElseGet(() -> null);
-        if(chosenItemToTake != null){
-            myBag.addItemInBag(chosenItemToTake);
-            return chosenItemToTake;
-        }
-        else{
-            System.out.println("No item " + inputItemToTake +" in this room.");
-            return null;
-        }
-    }
-
-    public Item drop(Room currentRoom){
-        System.out.println("Choose item to drop:\n" + getMyBag().getItemsInBag());
-        System.out.print(">");
-        String inputItemToDrop = InputController.readString();
-        Item chosenItemToDrop = getMyBag()
-                .getItems()
-                .stream()
-                .filter(i -> i.getName().equals(inputItemToDrop))
-                .findFirst()
-                .orElseGet(() -> null);
-        if(chosenItemToDrop != null){
-            getMyBag().removeItemFromBag(chosenItemToDrop);
-            return chosenItemToDrop;
-        }
-        else{
-            System.out.println("No item " + inputItemToDrop +" in the bag.");
-            return null;
-        }
     }
 }

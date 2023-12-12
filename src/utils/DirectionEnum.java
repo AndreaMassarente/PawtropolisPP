@@ -2,7 +2,7 @@ package utils;
 
 import java.util.Arrays;
 
-public enum Direction {
+public enum DirectionEnum {
     NORTH ("North"),
     SOUTH ("South"),
     EAST ("East"),
@@ -10,7 +10,7 @@ public enum Direction {
 
     private final String name;
 
-    Direction(String name) {
+    DirectionEnum(String name) {
         this.name = name;
     }
 
@@ -18,8 +18,8 @@ public enum Direction {
         return name;
     }
 
-    public static Direction getDirectionFromInput(String input){
-        return Arrays.stream(Direction.values())
+    public static DirectionEnum getDirectionFromInput(String input){
+        return Arrays.stream(DirectionEnum.values())
                 .filter(d -> d.name.equalsIgnoreCase(input))
                 .findFirst()
                 .orElse(null);
