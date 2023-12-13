@@ -1,7 +1,6 @@
-package game.map.model;
+package game.model;
 
-import game.model.npc.model.Animal;
-import game.model.Item;
+import game.model.npc.animal.Animal;
 import utils.DirectionEnum;
 
 import java.util.ArrayList;

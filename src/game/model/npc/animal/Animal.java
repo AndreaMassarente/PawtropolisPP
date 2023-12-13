@@ -1,4 +1,4 @@
-package game.model.npc.model;
+package game.model.npc.animal;
 
 import java.time.LocalDate;
 import java.util.Objects;

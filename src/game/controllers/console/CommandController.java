@@ -3,11 +3,6 @@ package game.controllers.console;
 import game.controllers.MapController;
 import game.model.Item;
 import game.model.Player;
-import utils.CommandEnum;
-import utils.DirectionEnum;
-import utils.ItemEnum;
-
-import java.util.List;
 import java.util.logging.Logger;
 
 public class CommandController {

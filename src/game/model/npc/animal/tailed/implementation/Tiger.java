@@ -1,6 +1,6 @@
-package game.model.npc.model.tailed.implementation;
+package game.model.npc.animal.tailed.implementation;
 
-import game.model.npc.model.tailed.AnimalWithTail;
+import game.model.npc.animal.tailed.AnimalWithTail;
 
 import java.time.LocalDate;
 

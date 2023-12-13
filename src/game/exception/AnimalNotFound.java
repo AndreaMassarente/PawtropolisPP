@@ -1,4 +1,4 @@
-package game.model.npc.exception;
+package game.exception;
 
 public class AnimalNotFound extends  Throwable{
 }
