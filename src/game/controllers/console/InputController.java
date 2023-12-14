@@ -1,8 +1,8 @@
 package game.controllers.console;
 
-import util.CommandEnum;
-import util.DirectionEnum;
-import util.ItemEnum;
+import game.util.CommandEnum;
+import game.util.DirectionEnum;
+import game.util.ItemEnum;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,7 +39,7 @@ public class InputController {
         return new ArrayList<>(Arrays.asList(words));
     }
 
-    public String parseCommand(List<String> wordList){
+    private String parseCommand(List<String> wordList){
         String msg;
         if(wordList.size() == 1){
             msg = runCommandWithoutParameter(wordList);
@@ -51,7 +51,7 @@ public class InputController {
         return msg;
     }
 
-    public String runCommandWithoutParameter(List<String> wordlist){
+    private String runCommandWithoutParameter(List<String> wordlist){
         String msg = "";
         CommandEnum command = CommandEnum.getCommandFromInput(wordlist.get(0));
 
@@ -71,7 +71,7 @@ public class InputController {
         return msg;
     }
 
-    public String runCommandWithParameter(List<String> wordList){
+    private String runCommandWithParameter(List<String> wordList){
         String parameterName;
         String msg = "";
         boolean error = false;

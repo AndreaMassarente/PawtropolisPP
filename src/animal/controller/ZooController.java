@@ -1,16 +1,16 @@
-package game.controllers;
+package animal.controller;
 
 
 
-import game.model.npc.animal.*;
-import game.exception.AnimalNotFound;
-import game.exception.SpeciesNotFound;
-import game.exception.SpecificTraitNotFound;
-import game.model.npc.animal.tailed.AnimalWithTail;
-import game.model.npc.animal.tailed.implementation.Lion;
-import game.model.npc.animal.tailed.implementation.Tiger;
-import game.model.npc.animal.winged.AnimalWithWings;
-import game.model.npc.animal.winged.implementation.Eagle;
+import animal.model.*;
+import animal.exception.AnimalNotFound;
+import animal.exception.SpeciesNotFound;
+import animal.exception.SpecificTraitNotFound;
+import animal.model.tailed.AnimalWithTail;
+import animal.model.tailed.implementation.Lion;
+import animal.model.tailed.implementation.Tiger;
+import animal.model.winged.AnimalWithWings;
+import animal.model.winged.implementation.Eagle;
 
 import java.time.LocalDate;
 import java.util.*;

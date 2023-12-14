@@ -1,6 +1,6 @@
-package game.exception;
+package animal.exception;
 
-import game.model.npc.animal.Animal;
+import animal.model.Animal;
 
 public class SpeciesNotFound extends Throwable{
     private final Class<? extends Animal> animal;

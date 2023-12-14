@@ -1,7 +1,7 @@
 package game.model;
 
-import game.model.npc.animal.Animal;
-import util.DirectionEnum;
+import animal.model.Animal;
+import game.util.DirectionEnum;
 
 import java.util.ArrayList;
 import java.util.HashMap;

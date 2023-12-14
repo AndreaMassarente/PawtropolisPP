@@ -1,10 +1,11 @@
 package game.controllers;
 
-import game.model.npc.animal.Animal;
-import game.exception.AnimalNotFound;
+import animal.controller.ZooController;
+import animal.model.Animal;
+import animal.exception.AnimalNotFound;
 import game.model.Item;
 import game.model.Room;
-import util.DirectionEnum;
+import game.util.DirectionEnum;
 
 import java.util.ArrayList;
 import java.util.List;
