@@ -3,6 +3,8 @@ package game.controllers.console;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class InputReader {
     // non ci interessa istanziare questa classe, ne usiamo solo i metodi static stateless
@@ -15,7 +17,8 @@ public class InputReader {
         try {
             return inputReader.readLine();
         } catch (IOException e) {
-            System.err.println("Error while reading user input");
+            Logger logger = Logger.getLogger(InputReader.class.getName());
+            logger.log(Level.WARNING,"Error while reading user input");
             return "";
         }
     }
