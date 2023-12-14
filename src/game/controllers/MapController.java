@@ -9,11 +9,12 @@ import game.util.DirectionEnum;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MapController {
 
     private Room currentRoom;
-
     public MapController(){
         currentRoom = generateMapThenGetEntry();
     }
@@ -43,11 +44,12 @@ public class MapController {
         //Aggiunta Npc nelle stanze
         ZooController zooController = new ZooController();
         zooController.populateZoo();
+        Logger logger = Logger.getLogger(getClass().getName());
         List<Animal> animals = new ArrayList<>();
         try{
             animals = zooController.getAnimalsList();
         } catch (AnimalNotFound e){
-            System.err.println("No Npc found!!");
+            logger.log(Level.WARNING,"No Npc found!!");
         }
         room2.addNpc(animals.get(0));
         room4.addNpc(animals.get(1));
