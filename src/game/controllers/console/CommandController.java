@@ -3,6 +3,8 @@ package game.controllers.console;
 import game.controllers.MapController;
 import game.model.Item;
 import game.model.Player;
+
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CommandController {
@@ -29,7 +31,7 @@ public class CommandController {
         Item item = mapController.getCurrentRoom().getItemInRoomFromInput(itemName);
         Logger logger = Logger.getLogger(getClass().getName());
         if (item == null) {
-            logger.info("no " + itemName + " in room");
+            logger.log(Level.WARNING,"no {0} in room", itemName);
         } else if (!player.getMyBag().addItemInBag(item)) {
             logger.info("no enough space in bag");
         } else {
@@ -41,7 +43,7 @@ public class CommandController {
         Item item = player.getMyBag().getItemInBagFromInput(itemName);
         Logger logger = Logger.getLogger(getClass().getName());
         if (item == null) {
-            logger.info("no" + itemName + " in bag");
+            logger.log(Level.WARNING, "no {0} in bag", itemName);
         } else  {
             player.getMyBag().removeItemFromBag(item);
             mapController.getCurrentRoom().addItem(item);
