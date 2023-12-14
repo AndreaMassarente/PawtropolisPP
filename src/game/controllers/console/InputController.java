@@ -16,7 +16,7 @@ public class InputController {
 
     public String readCommand(String input){
         List<String> wordList;
-        String returnString = "";
+        String returnString;
         String lowerCaseString = input.trim().toLowerCase();
 
         if(!lowerCaseString.equals("q")){
@@ -52,7 +52,7 @@ public class InputController {
     }
 
     private String runCommandWithoutParameter(List<String> wordlist){
-        String msg = "";
+        String msg;
         CommandEnum command = CommandEnum.getCommandFromInput(wordlist.get(0));
 
         if(command == null){
