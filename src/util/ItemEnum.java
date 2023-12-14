@@ -1,4 +1,4 @@
-package utils;
+package util;
 
 import java.util.Arrays;
 
@@ -14,7 +14,7 @@ public enum ItemEnum {
     BOW("Bow"),
     GUN("Gun");
 
-    private String name;
+    private final String name;
 
     ItemEnum(String name) {
         this.name = name;

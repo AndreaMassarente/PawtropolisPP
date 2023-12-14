@@ -1,8 +1,8 @@
 package game.controllers.console;
 
-import utils.CommandEnum;
-import utils.DirectionEnum;
-import utils.ItemEnum;
+import util.CommandEnum;
+import util.DirectionEnum;
+import util.ItemEnum;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -4,7 +4,7 @@ import game.model.npc.animal.Animal;
 import game.exception.AnimalNotFound;
 import game.model.Item;
 import game.model.Room;
-import utils.DirectionEnum;
+import util.DirectionEnum;
 
 import java.util.ArrayList;
 import java.util.List;

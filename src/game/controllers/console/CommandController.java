@@ -26,7 +26,7 @@ public class CommandController {
     }
 
     public void getItem(String itemName) {
-        Item item = mapController.getCurrentRoom().getItemFromInput(itemName);
+        Item item = mapController.getCurrentRoom().getItemInRoomFromInput(itemName);
         Logger logger = Logger.getLogger(getClass().getName());
         if (item == null) {
             logger.info("no " + itemName + " in room");
@@ -38,7 +38,7 @@ public class CommandController {
     }
 
     public void dropItem(String itemName) {
-        Item item = player.getMyBag().getItemFromInput(itemName);
+        Item item = player.getMyBag().getItemInBagFromInput(itemName);
         Logger logger = Logger.getLogger(getClass().getName());
         if (item == null) {
             logger.info("no" + itemName + " in bag");

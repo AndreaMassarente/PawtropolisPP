@@ -62,7 +62,7 @@ public class Bag {
         currentFreeSlots += item.getSpaceInBag();
     }
 
-    public Item getItemFromInput(String input) {
+    public Item getItemInBagFromInput(String input) {
         Item currentItem = null;
         String itemName;
         String nameToLowerCase = input.trim().toLowerCase();

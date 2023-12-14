@@ -1,7 +1,7 @@
 package game.model;
 
 import game.model.npc.animal.Animal;
-import utils.DirectionEnum;
+import util.DirectionEnum;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -110,7 +110,7 @@ public class Room {
 
     }
 
-    public Item getItemFromInput(String input) {
+    public Item getItemInRoomFromInput(String input) {
         Item currentItem = null;
         String itemName;
         String nameToLowerCase = input.trim().toLowerCase();

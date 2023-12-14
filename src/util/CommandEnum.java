@@ -1,4 +1,4 @@
-package utils;
+package util;
 
 import java.util.Arrays;
 
@@ -9,7 +9,7 @@ public enum CommandEnum {
     GET("Get"),
     DROP("Drop");
 
-    private String name;
+    private final String name;
 
     CommandEnum(String name) {
         this.name = name;
