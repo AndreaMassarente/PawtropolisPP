@@ -4,7 +4,7 @@ import animal.model.Animal;
 import game.util.DirectionEnum;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -20,7 +20,7 @@ public class Room {
     public Room(String name, String description) {
         this.name = name;
         this.description = description;
-        connectedRooms = new HashMap<>();
+        connectedRooms = new EnumMap<>(DirectionEnum.class);
         items = new ArrayList<>();
         npc = new ArrayList<>();
     }
