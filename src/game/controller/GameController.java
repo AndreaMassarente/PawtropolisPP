@@ -11,7 +11,7 @@ public class GameController {
 
     public GameController(Player player) {
         this.player = player;
-        inputManager = new InputManager();
+        inputManager = new InputManager(player);
     }
 
     public void runGame() {

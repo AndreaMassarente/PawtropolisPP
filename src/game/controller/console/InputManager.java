@@ -1,6 +1,7 @@
 package game.controller.console;
 
 import game.controller.CommandController;
+import game.model.Player;
 import game.util.CommandEnum;
 import game.util.DirectionEnum;
 import game.util.ItemEnum;
@@ -11,8 +12,8 @@ import java.util.List;
 
 public class InputManager {
     private final CommandController commandController;
-    public InputManager() {
-        commandController = new CommandController();
+    public InputManager(Player player) {
+        commandController = new CommandController(player);
     }
 
     public String readCommand(String input){

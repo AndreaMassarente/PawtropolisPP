@@ -11,12 +11,6 @@ public class Player {
         bag = new Bag();
     }
 
-    public Player() {
-        name = "User";
-        healthPoints = 10;
-        bag = new Bag();
-    }
-
     public String getName() {
         return name;
     }

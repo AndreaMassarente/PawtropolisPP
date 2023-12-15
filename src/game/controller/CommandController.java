@@ -9,8 +9,8 @@ import java.util.logging.Logger;
 public class CommandController {
     private final Player player;
     private final MapController mapController;
-    public CommandController() {
-        player = new Player();
+    public CommandController(Player player) {
+        this.player = player;
         mapController = new MapController();
         mapController.generateMap();
     }
