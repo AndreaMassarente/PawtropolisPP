@@ -1,4 +1,4 @@
-package game.controllers;
+package game.controller;
 
 import animal.controller.ZooController;
 import animal.model.Animal;
@@ -16,7 +16,7 @@ public class MapController {
 
     private Room currentRoom;
     public MapController(){
-        currentRoom = generateMapThenGetEntry();
+        currentRoom = generateMap();
     }
 
     public Room getCurrentRoom() {
@@ -27,7 +27,7 @@ public class MapController {
         this.currentRoom = currentRoom;
     }
 
-    public Room generateMapThenGetEntry(){
+    public Room generateMap(){
         Room room1 = new Room("Basement", "a dark, cramped place");
         Room room2 = new Room("Thermal Baths", "a warm place, there is a lot of fog and hot water gaiser");
         Room room3 = new Room("Cave", "a dark cave, you hear a lot of chilling noises");
@@ -74,21 +74,21 @@ public class MapController {
         room11.addItem(new Item("Gun", "+20 sp.atk, +20 sp.def", 2));
 
         //Collegamento delle stanze
-        connectRoom(room1, room3, DirectionEnum.WEST);
-        connectRoom(room1, room6, DirectionEnum.EAST);
-        connectRoom(room1, room2, DirectionEnum.SOUTH);
-        connectRoom(room3, room4, DirectionEnum.NORTH);
-        connectRoom(room3, room5, DirectionEnum.WEST);
-        connectRoom(room6, room8, DirectionEnum.NORTH);
-        connectRoom(room8, room9, DirectionEnum.NORTH);
-        connectRoom(room9, room10, DirectionEnum.EAST);
-        connectRoom(room10, room11, DirectionEnum.EAST);
-        connectRoom(room11, room12, DirectionEnum.SOUTH);
+        connectRooms(room1, room3, DirectionEnum.WEST);
+        connectRooms(room1, room6, DirectionEnum.EAST);
+        connectRooms(room1, room2, DirectionEnum.SOUTH);
+        connectRooms(room3, room4, DirectionEnum.NORTH);
+        connectRooms(room3, room5, DirectionEnum.WEST);
+        connectRooms(room6, room8, DirectionEnum.NORTH);
+        connectRooms(room8, room9, DirectionEnum.NORTH);
+        connectRooms(room9, room10, DirectionEnum.EAST);
+        connectRooms(room10, room11, DirectionEnum.EAST);
+        connectRooms(room11, room12, DirectionEnum.SOUTH);
 
         return room1;
     }
 
-    public void connectRoom(Room roomA, Room roomB, DirectionEnum direction){
+    public void connectRooms(Room roomA, Room roomB, DirectionEnum direction){
         switch (direction){
             case NORTH:
                 roomA.addConnectedRoom(DirectionEnum.NORTH, roomB);
@@ -110,14 +110,14 @@ public class MapController {
     }
 
     public String changeCurrentRoom(String direction){
-        DirectionEnum currentDirection = DirectionEnum.getDirectionFromInput(direction);
+        DirectionEnum currentDirection = DirectionEnum.getDirectionByString(direction);
 
         if (currentDirection == null)
             return ("Incorrect direction");
 
         else if(currentRoom.getConnectedRoomByDirection(currentDirection) != null){
             currentRoom = currentRoom.getConnectedRoomByDirection(currentDirection);
-            return (getCurrentRoom().getRoomDescription());
+            return (getCurrentRoom().look());
         }
         else{
             return ("No room in this direction");

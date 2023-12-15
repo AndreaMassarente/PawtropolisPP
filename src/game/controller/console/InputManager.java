@@ -1,5 +1,6 @@
-package game.controllers.console;
+package game.controller.console;
 
+import game.controller.CommandController;
 import game.util.CommandEnum;
 import game.util.DirectionEnum;
 import game.util.ItemEnum;
@@ -8,9 +9,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class InputController {
+public class InputManager {
     private final CommandController commandController;
-    public InputController() {
+    public InputManager() {
         commandController = new CommandController();
     }
 
@@ -53,7 +54,7 @@ public class InputController {
 
     private String runCommandWithoutParameter(List<String> wordlist){
         String msg;
-        CommandEnum command = CommandEnum.getCommandFromInput(wordlist.get(0));
+        CommandEnum command = CommandEnum.getCommandByString(wordlist.get(0));
 
         if(command == null){
             msg = "incorrect command";
@@ -77,9 +78,9 @@ public class InputController {
         boolean error = false;
 
         parameterName = wordList.get(1);
-        CommandEnum command = CommandEnum.getCommandFromInput(wordList.get(0));
-        ItemEnum item = ItemEnum.getItemFromInput(parameterName);
-        DirectionEnum direction = DirectionEnum.getDirectionFromInput(parameterName);
+        CommandEnum command = CommandEnum.getCommandByString(wordList.get(0));
+        ItemEnum item = ItemEnum.getItemByString(parameterName);
+        DirectionEnum direction = DirectionEnum.getDirectionByString(parameterName);
 
         if(command == null) {
             msg = "incorrect command!";

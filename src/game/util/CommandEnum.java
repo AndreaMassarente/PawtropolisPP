@@ -3,7 +3,7 @@ package game.util;
 import java.util.Arrays;
 
 public enum CommandEnum {
-    LOOK("look"),
+    LOOK("Look"),
     BAG("Bag"),
     GO("Go"),
     GET("Get"),
@@ -19,9 +19,9 @@ public enum CommandEnum {
         return name;
     }
 
-    public static CommandEnum getCommandFromInput(String input){
+    public static CommandEnum getCommandByString(String string){
         return Arrays.stream(CommandEnum.values())
-                .filter(c -> c.name.equalsIgnoreCase(input))
+                .filter(c -> c.name.equalsIgnoreCase(string))
                 .findFirst()
                 .orElse(null);
     }

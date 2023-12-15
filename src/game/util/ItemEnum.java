@@ -4,10 +4,10 @@ import java.util.Arrays;
 
 public enum ItemEnum {
     POTION("Potion"),
-    SUPERPOTION("Super Potion"),
-    HYPERPOTION("Hyper Potion"),
-    FULLHEAL("Full Heal"),
-    FULLRESTORE("Full Restore"),
+    SUPER_POTION("Super Potion"),
+    HYPER_POTION("Hyper Potion"),
+    FULL_HEAL("Full Heal"),
+    FULL_RESTORE("Full Restore"),
     SWORD("Sword"),
     SHIELD("Shield"),
     ARMOR("Armor"),
@@ -24,9 +24,9 @@ public enum ItemEnum {
         return name;
     }
 
-    public static ItemEnum getItemFromInput(String input){
+    public static ItemEnum getItemByString(String string){
         return Arrays.stream(ItemEnum.values())
-                .filter(i -> i.name.equalsIgnoreCase(input))
+                .filter(i -> i.name.equalsIgnoreCase(string))
                 .findFirst()
                 .orElse(null);
     }

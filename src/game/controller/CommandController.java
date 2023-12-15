@@ -1,6 +1,5 @@
-package game.controllers.console;
+package game.controller;
 
-import game.controllers.MapController;
 import game.model.Item;
 import game.model.Player;
 
@@ -16,11 +15,11 @@ public class CommandController {
     }
 
     public String look() {
-        return mapController.getCurrentRoom().getRoomDescription();
+        return mapController.getCurrentRoom().look();
     }
 
     public String bag() {
-        return player.getMyBag().getItemsInBag();
+        return player.getBag().getItemsToString();
     }
 
     public String go(String direction) {
@@ -28,11 +27,11 @@ public class CommandController {
     }
 
     public void getItem(String itemName) {
-        Item item = mapController.getCurrentRoom().getItemInRoomFromInput(itemName);
+        Item item = mapController.getCurrentRoom().getItemByString(itemName);
         Logger logger = Logger.getLogger(getClass().getName());
         if (item == null) {
             logger.log(Level.WARNING,"no {0} in room", itemName);
-        } else if (!player.getMyBag().addItemInBag(item)) {
+        } else if (!player.getBag().addItem(item)) {
             logger.info("no enough space in bag");
         } else {
             mapController.getCurrentRoom().removeItem(item);
@@ -40,12 +39,12 @@ public class CommandController {
     }
 
     public void dropItem(String itemName) {
-        Item item = player.getMyBag().getItemInBagFromInput(itemName);
+        Item item = player.getBag().getItemByString(itemName);
         Logger logger = Logger.getLogger(getClass().getName());
         if (item == null) {
             logger.log(Level.WARNING, "no {0} in bag", itemName);
         } else  {
-            player.getMyBag().removeItemFromBag(item);
+            player.getBag().removeItem(item);
             mapController.getCurrentRoom().addItem(item);
         }
     }

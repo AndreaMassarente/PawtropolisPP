@@ -1,17 +1,17 @@
-package game.controllers;
+package game.controller;
 
-import game.controllers.console.InputController;
-import game.controllers.console.InputReader;
+import game.controller.console.InputManager;
+import game.controller.console.InputReader;
 import game.model.Player;
 import java.util.logging.Logger;
 
 public class GameController {
     private final Player player;
-    private final InputController inputController;
+    private final InputManager inputManager;
 
     public GameController(Player player) {
         this.player = player;
-        inputController = new InputController();
+        inputManager = new InputManager();
     }
 
     public void runGame() {
@@ -24,7 +24,7 @@ public class GameController {
             System.out.println("What do you want to do?");
             System.out.print(">");
             input = InputReader.readString();
-            output = inputController.readCommand(input);
+            output = inputManager.readCommand(input);
             if(!output.trim().equalsIgnoreCase("quit"))
                 System.out.println(output);
             else{

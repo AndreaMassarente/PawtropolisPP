@@ -32,17 +32,6 @@ public class Room {
     public String getDescription() {
         return description;
     }
-    public Map<DirectionEnum, Room> getConnectedRooms() {
-        return connectedRooms;
-    }
-
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public List<Animal> getNpc() {
-        return npc;
-    }
 
     public void addItem(Item item){
         items.add(item);
@@ -104,22 +93,17 @@ public class Room {
         return connectedRoom;
     }
 
-    public String getRoomDescription(){
+    public String look(){
         return "You are in " + getName() +  "\n" + getDescription() + "\nItems:\n" + getItemsDescription()
                 +"\nNCP:\n" + getNpcDescription() + "\n" + "Connected rooms: \n" + getConnectedRoomsNames() + "\n";
 
     }
 
-    public Item getItemInRoomFromInput(String input) {
-        Item currentItem = null;
-        String itemName;
-        String nameToLowerCase = input.trim().toLowerCase();
-        for (Item item : items){
-            itemName = item.getName().trim().toLowerCase();
-            if(itemName.equals(nameToLowerCase)){
-                currentItem = item;
-            }
-        }
-        return currentItem;
+    public Item getItemByString(String string) {
+        String nameToLowerCase = string.trim();
+        return items.stream()
+                .filter(i -> i.getName().equalsIgnoreCase(nameToLowerCase))
+                .findAny()
+                .orElse(null);
     }
 }

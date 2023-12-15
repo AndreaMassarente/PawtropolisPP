@@ -18,9 +18,9 @@ public enum DirectionEnum {
         return name;
     }
 
-    public static DirectionEnum getDirectionFromInput(String input){
+    public static DirectionEnum getDirectionByString(String string){
         return Arrays.stream(DirectionEnum.values())
-                .filter(d -> d.name.equalsIgnoreCase(input))
+                .filter(d -> d.name.equalsIgnoreCase(string))
                 .findFirst()
                 .orElse(null);
     }

@@ -3,18 +3,18 @@ package game.model;
 public class Player {
     private final String name;
     private int healthPoints;
-    private final Bag myBag;
+    private final Bag bag;
 
     public Player(String name) {
         this.name = name;
         healthPoints = 10;
-        myBag = new Bag();
+        bag = new Bag();
     }
 
     public Player() {
         name = "User";
         healthPoints = 10;
-        myBag = new Bag();
+        bag = new Bag();
     }
 
     public String getName() {
@@ -29,7 +29,7 @@ public class Player {
         this.healthPoints = healthPoints;
     }
 
-    public Bag getMyBag() {
-        return myBag;
+    public Bag getBag() {
+        return bag;
     }
 }
