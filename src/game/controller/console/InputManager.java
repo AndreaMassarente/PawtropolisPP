@@ -79,8 +79,8 @@ public class InputManager {
 
         parameterName = wordList.get(1);
         CommandEnum command = CommandEnum.getCommandByString(wordList.get(0));
-        ItemEnum item = ItemEnum.getItemByString(parameterName);
-        DirectionEnum direction = DirectionEnum.getDirectionByString(parameterName);
+        ItemEnum item;
+        DirectionEnum direction;
 
         if(command == null) {
             msg = "incorrect command!";
@@ -89,17 +89,20 @@ public class InputManager {
         if(!error) {
             switch (command){
                 case GO:
+                    direction = DirectionEnum.getDirectionByString(parameterName);
                     if (direction == null) {
                         return "parameter " + parameterName + " is not a direction";
                     }
                     return commandController.go(parameterName);
                 case GET:
+                    item = ItemEnum.getItemByString(parameterName);
                     if(item == null){
                         return parameterName + " is not a correct parameter!";
                     }
                     commandController.getItem(parameterName);
                     break;
                 case DROP:
+                    item = ItemEnum.getItemByString(parameterName);
                     if(item == null){
                         return parameterName + " is not a correct parameter!";
                     }

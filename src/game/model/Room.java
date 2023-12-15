@@ -55,7 +55,7 @@ public class Room {
         connectedRooms.put(direction, room);
     }
 
-    public String getNpcDescription() {
+    public String getNpcNames() {
         String npcDescription;
         if(!npc.isEmpty()){
             npcDescription = npc.stream()
@@ -69,7 +69,7 @@ public class Room {
         return npcDescription;
     }
 
-    public String getItemsDescription() {
+    public String getItemsNames() {
         String itemsDescription;
         if(!items.isEmpty()){
             itemsDescription = items.stream()
@@ -94,8 +94,8 @@ public class Room {
     }
 
     public String look(){
-        return "You are in " + getName() +  "\n" + getDescription() + "\nItems:\n" + getItemsDescription()
-                +"\nNCP:\n" + getNpcDescription() + "\n" + "Connected rooms: \n" + getConnectedRoomsNames() + "\n";
+        return "You are in " + getName() +  "\n" + getDescription() + "\nItems:\n" + getItemsNames()
+                +"\nNCP:\n" + getNpcNames() + "\n" + "Connected rooms: \n" + getConnectedRoomsNames() + "\n";
 
     }
 

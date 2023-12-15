@@ -15,20 +15,16 @@ import java.util.logging.Logger;
 public class MapController {
 
     private Room currentRoom;
+
     public MapController(){
-        currentRoom = generateMap();
+        currentRoom = new Room("Basement", "a dark, cramped place");
     }
 
     public Room getCurrentRoom() {
         return currentRoom;
     }
 
-    public void setCurrentRoom(Room currentRoom) {
-        this.currentRoom = currentRoom;
-    }
-
-    public Room generateMap(){
-        Room room1 = new Room("Basement", "a dark, cramped place");
+    public void generateMap(){
         Room room2 = new Room("Thermal Baths", "a warm place, there is a lot of fog and hot water gaiser");
         Room room3 = new Room("Cave", "a dark cave, you hear a lot of chilling noises");
         Room room4 = new Room("Mausoleum", "in front of a grave, but it’s too big to be a normal person");
@@ -74,9 +70,9 @@ public class MapController {
         room11.addItem(new Item("Gun", "+20 sp.atk, +20 sp.def", 2));
 
         //Collegamento delle stanze
-        connectRooms(room1, room3, DirectionEnum.WEST);
-        connectRooms(room1, room6, DirectionEnum.EAST);
-        connectRooms(room1, room2, DirectionEnum.SOUTH);
+        connectRooms(currentRoom, room3, DirectionEnum.WEST);
+        connectRooms(currentRoom, room6, DirectionEnum.EAST);
+        connectRooms(currentRoom, room2, DirectionEnum.SOUTH);
         connectRooms(room3, room4, DirectionEnum.NORTH);
         connectRooms(room3, room5, DirectionEnum.WEST);
         connectRooms(room6, room8, DirectionEnum.NORTH);
@@ -84,8 +80,6 @@ public class MapController {
         connectRooms(room9, room10, DirectionEnum.EAST);
         connectRooms(room10, room11, DirectionEnum.EAST);
         connectRooms(room11, room12, DirectionEnum.SOUTH);
-
-        return room1;
     }
 
     public void connectRooms(Room roomA, Room roomB, DirectionEnum direction){

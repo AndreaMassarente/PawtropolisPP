@@ -12,6 +12,7 @@ public class CommandController {
     public CommandController() {
         player = new Player();
         mapController = new MapController();
+        mapController.generateMap();
     }
 
     public String look() {
