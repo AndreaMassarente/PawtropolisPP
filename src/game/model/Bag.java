@@ -63,15 +63,10 @@ public class Bag {
     }
 
     public Item getItemInBagFromInput(String input) {
-        Item currentItem = null;
-        String itemName;
         String nameToLowerCase = input.trim().toLowerCase();
-        for (Item item : items){
-            itemName = item.getName().trim().toLowerCase();
-            if(itemName.equals(nameToLowerCase)){
-                currentItem = item;
-            }
-        }
-        return currentItem;
+        return items.stream()
+                .filter(i -> i.getName().equalsIgnoreCase(nameToLowerCase))
+                .findAny()
+                .orElse(null);
     }
 }
