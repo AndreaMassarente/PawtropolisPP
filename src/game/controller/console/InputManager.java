@@ -1,16 +1,16 @@
 package game.controller.console;
 
 import game.model.Player;
-import game.util.command.CommandController;
+import game.controller.CommandRunner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class InputManager {
-    private final CommandController commandController;
+    private final CommandRunner commandRunner;
     public InputManager(Player player) {
-        commandController = new CommandController(player);
+        commandRunner = new CommandRunner(player);
     }
 
     public String readCommand(String input){
@@ -41,9 +41,9 @@ public class InputManager {
     private String parseCommand(List<String> wordList){
         String msg;
         if(wordList.size() == 1){
-            msg = commandController.executeCommandWithoutParameter(wordList.get(0));
+            msg = commandRunner.executeCommandWithoutParameter(wordList.get(0));
         } else if (wordList.size() > 1) {
-            msg = commandController.executeCommandWithParameter(wordList);
+            msg = commandRunner.executeCommandWithParameter(wordList);
         } else {
             msg = "Command not allowed!";
         }
