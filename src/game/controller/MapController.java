@@ -82,23 +82,23 @@ public class MapController {
         connectRooms(room11, room12, DirectionEnum.SOUTH);
     }
 
-    public void connectRooms(Room roomA, Room roomB, DirectionEnum direction){
+    public void connectRooms(Room entryRoom, Room exitRoom, DirectionEnum direction){
         switch (direction){
             case NORTH:
-                roomA.addConnectedRoom(DirectionEnum.NORTH, roomB);
-                roomB.addConnectedRoom(DirectionEnum.SOUTH, roomA);
+                entryRoom.addConnectedRoom(DirectionEnum.NORTH, exitRoom);
+                exitRoom.addConnectedRoom(DirectionEnum.SOUTH, entryRoom);
                 break;
             case SOUTH:
-                roomA.addConnectedRoom(DirectionEnum.SOUTH, roomB);
-                roomB.addConnectedRoom(DirectionEnum.NORTH, roomA);
+                entryRoom.addConnectedRoom(DirectionEnum.SOUTH, exitRoom);
+                exitRoom.addConnectedRoom(DirectionEnum.NORTH, entryRoom);
                 break;
             case EAST:
-                roomA.addConnectedRoom(DirectionEnum.EAST, roomB);
-                roomB.addConnectedRoom(DirectionEnum.WEST, roomA);
+                entryRoom.addConnectedRoom(DirectionEnum.EAST, exitRoom);
+                exitRoom.addConnectedRoom(DirectionEnum.WEST, entryRoom);
                 break;
             case WEST:
-                roomA.addConnectedRoom(DirectionEnum.WEST, roomB);
-                roomB.addConnectedRoom(DirectionEnum.EAST, roomA);
+                entryRoom.addConnectedRoom(DirectionEnum.WEST, exitRoom);
+                exitRoom.addConnectedRoom(DirectionEnum.EAST, entryRoom);
                 break;
         }
     }
