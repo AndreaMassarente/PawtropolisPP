@@ -6,10 +6,10 @@ import game.model.Player;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class CommandController {
+public class Test {
     private final Player player;
     private final MapController mapController;
-    public CommandController(Player player) {
+    public Test(Player player) {
         this.player = player;
         mapController = new MapController();
         mapController.generateMap();
