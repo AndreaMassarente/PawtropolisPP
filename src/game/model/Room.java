@@ -1,7 +1,7 @@
 package game.model;
 
 import animal.model.Animal;
-import game.util.DirectionEnum;
+import game.util.enu.DirectionEnum;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
