@@ -7,7 +7,7 @@ import game.util.command.with_parameter.CommandWithParameter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Drop extends CommandWithParameter {
+public class Drop extends CommandWithParameter <Void>{
     public Drop(CommandRunner commandRunner, String parameter){
         super(commandRunner, parameter);
     }
