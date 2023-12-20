@@ -4,7 +4,7 @@ package game.util.command.implementation;
 import game.controller.CommandRunner;
 import game.util.command.Command;
 
-public class Look extends Command {
+public class Look extends Command <String> {
     public Look(CommandRunner commandRunner){
         super(commandRunner);
     }

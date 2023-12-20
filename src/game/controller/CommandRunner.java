@@ -7,10 +7,14 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CommandRunner {
     private final Player player;
     private final MapController mapController;
+
+    private final Logger logger = Logger.getLogger(getClass().getName());
 
     public CommandRunner(Player player) {
         this.player = player;
@@ -34,7 +38,7 @@ public class CommandRunner {
             msg = (String) commandMethod.invoke(commandInstance);
 
         } catch (Exception e) {
-            System.err.println("Command not found");
+            logger.log(Level.WARNING, "command not found");
         }
         return msg;
     }
@@ -55,7 +59,7 @@ public class CommandRunner {
             msg =  (String) commandMethod.invoke(commandInstance);
 
         } catch (Exception e) {
-            System.err.println(Arrays.toString(e.getStackTrace()));
+            logger.log(Level.WARNING, "command not found");
         }
 
         return Objects.requireNonNullElse(msg, "");

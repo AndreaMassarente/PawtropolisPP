@@ -1,7 +1,7 @@
 package game.model;
 
 import animal.model.Animal;
-import game.util.enu.DirectionEnum;
+import game.util.Direction;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -13,14 +13,14 @@ public class Room {
     private final String name;
     private final String description;
 
-    private final Map<DirectionEnum, Room> connectedRooms;
+    private final Map<Direction, Room> connectedRooms;
     private final List<Item> items;
     private final List<Animal> npc;
 
     public Room(String name, String description) {
         this.name = name;
         this.description = description;
-        connectedRooms = new EnumMap<>(DirectionEnum.class);
+        connectedRooms = new EnumMap<>(Direction.class);
         items = new ArrayList<>();
         npc = new ArrayList<>();
     }
@@ -47,11 +47,11 @@ public class Room {
         this.npc.remove(npc);
     }
 
-    public Room getConnectedRoomByDirection(DirectionEnum direction){
+    public Room getConnectedRoomByDirection(Direction direction){
         return connectedRooms.get(direction);
     }
 
-    public void addConnectedRoom(DirectionEnum direction, Room room){
+    public void addConnectedRoom(Direction direction, Room room){
         connectedRooms.put(direction, room);
     }
 

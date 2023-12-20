@@ -5,7 +5,7 @@ import animal.model.Animal;
 import animal.exception.AnimalNotFound;
 import game.model.Item;
 import game.model.Room;
-import game.util.enu.DirectionEnum;
+import game.util.Direction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,41 +70,41 @@ public class MapController {
         room11.addItem(new Item("Gun", "+20 sp.atk, +20 sp.def", 2));
 
         //Collegamento delle stanze
-        connectRooms(currentRoom, room3, DirectionEnum.WEST);
-        connectRooms(currentRoom, room6, DirectionEnum.EAST);
-        connectRooms(currentRoom, room2, DirectionEnum.SOUTH);
-        connectRooms(room3, room4, DirectionEnum.NORTH);
-        connectRooms(room3, room5, DirectionEnum.WEST);
-        connectRooms(room6, room8, DirectionEnum.NORTH);
-        connectRooms(room8, room9, DirectionEnum.NORTH);
-        connectRooms(room9, room10, DirectionEnum.EAST);
-        connectRooms(room10, room11, DirectionEnum.EAST);
-        connectRooms(room11, room12, DirectionEnum.SOUTH);
+        connectRooms(currentRoom, room3, Direction.WEST);
+        connectRooms(currentRoom, room6, Direction.EAST);
+        connectRooms(currentRoom, room2, Direction.SOUTH);
+        connectRooms(room3, room4, Direction.NORTH);
+        connectRooms(room3, room5, Direction.WEST);
+        connectRooms(room6, room8, Direction.NORTH);
+        connectRooms(room8, room9, Direction.NORTH);
+        connectRooms(room9, room10, Direction.EAST);
+        connectRooms(room10, room11, Direction.EAST);
+        connectRooms(room11, room12, Direction.SOUTH);
     }
 
-    public void connectRooms(Room entryRoom, Room exitRoom, DirectionEnum direction){
+    public void connectRooms(Room entryRoom, Room exitRoom, Direction direction){
         switch (direction){
             case NORTH:
-                entryRoom.addConnectedRoom(DirectionEnum.NORTH, exitRoom);
-                exitRoom.addConnectedRoom(DirectionEnum.SOUTH, entryRoom);
+                entryRoom.addConnectedRoom(Direction.NORTH, exitRoom);
+                exitRoom.addConnectedRoom(Direction.SOUTH, entryRoom);
                 break;
             case SOUTH:
-                entryRoom.addConnectedRoom(DirectionEnum.SOUTH, exitRoom);
-                exitRoom.addConnectedRoom(DirectionEnum.NORTH, entryRoom);
+                entryRoom.addConnectedRoom(Direction.SOUTH, exitRoom);
+                exitRoom.addConnectedRoom(Direction.NORTH, entryRoom);
                 break;
             case EAST:
-                entryRoom.addConnectedRoom(DirectionEnum.EAST, exitRoom);
-                exitRoom.addConnectedRoom(DirectionEnum.WEST, entryRoom);
+                entryRoom.addConnectedRoom(Direction.EAST, exitRoom);
+                exitRoom.addConnectedRoom(Direction.WEST, entryRoom);
                 break;
             case WEST:
-                entryRoom.addConnectedRoom(DirectionEnum.WEST, exitRoom);
-                exitRoom.addConnectedRoom(DirectionEnum.EAST, entryRoom);
+                entryRoom.addConnectedRoom(Direction.WEST, exitRoom);
+                exitRoom.addConnectedRoom(Direction.EAST, entryRoom);
                 break;
         }
     }
 
     public String changeCurrentRoom(String direction){
-        DirectionEnum currentDirection = DirectionEnum.getDirectionByString(direction);
+        Direction currentDirection = Direction.getDirectionByString(direction);
 
         if (currentDirection == null)
             return ("Incorrect direction");

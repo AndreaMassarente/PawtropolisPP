@@ -1,8 +1,8 @@
-package game.util.enu;
+package game.util;
 
 import java.util.Arrays;
 
-public enum DirectionEnum {
+public enum Direction {
     NORTH ("North"),
     SOUTH ("South"),
     EAST ("East"),
@@ -10,7 +10,7 @@ public enum DirectionEnum {
 
     private final String name;
 
-    DirectionEnum(String name) {
+    Direction(String name) {
         this.name = name;
     }
 
@@ -18,8 +18,8 @@ public enum DirectionEnum {
         return name;
     }
 
-    public static DirectionEnum getDirectionByString(String string){
-        return Arrays.stream(DirectionEnum.values())
+    public static Direction getDirectionByString(String string){
+        return Arrays.stream(Direction.values())
                 .filter(d -> d.name.equalsIgnoreCase(string))
                 .findFirst()
                 .orElse(null);
