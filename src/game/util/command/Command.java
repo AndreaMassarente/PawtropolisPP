@@ -2,7 +2,7 @@ package game.util.command;
 
 import game.controller.CommandRunner;
 
-public abstract class Command {
+public abstract class Command <T>{
     private final CommandRunner commandRunner;
 
     protected Command(CommandRunner commandRunner) {
@@ -13,5 +13,5 @@ public abstract class Command {
         return commandRunner;
     }
 
-    public abstract <T> T execute();
+    public abstract T execute();
 }
