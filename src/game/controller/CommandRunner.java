@@ -3,6 +3,7 @@ package game.controller;
 import game.model.Player;
 import game.command.Command;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Objects;
@@ -36,8 +37,10 @@ public class CommandRunner {
 
             msg = (String) commandMethod.invoke(commandInstance);
 
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | NoSuchMethodException exception) {
             logger.log(Level.WARNING, "command not found");
+        }catch (InstantiationException | IllegalAccessException | InvocationTargetException exception){
+            logger.log(Level.WARNING, "Command not yet implemented");
         }
         return msg;
     }
@@ -57,10 +60,11 @@ public class CommandRunner {
 
             msg =  (String) commandMethod.invoke(commandInstance);
 
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | NoSuchMethodException exception) {
             logger.log(Level.WARNING, "command not found");
+        }catch (InstantiationException | IllegalAccessException | InvocationTargetException exception){
+            logger.log(Level.WARNING, "Command not yet implemented");
         }
-
         return Objects.requireNonNullElse(msg, "");
     }
 
