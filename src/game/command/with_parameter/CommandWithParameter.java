@@ -1,9 +1,9 @@
-package game.util.command.with_parameter;
+package game.command.with_parameter;
 
+import game.command.Command;
 import game.controller.CommandRunner;
-import game.util.command.Command;
 
-public abstract class CommandWithParameter <T> extends Command <T> {
+public abstract class CommandWithParameter <T> extends Command<T> {
     private final String parameter;
 
     protected CommandWithParameter(CommandRunner commandRunner, String parameter) {

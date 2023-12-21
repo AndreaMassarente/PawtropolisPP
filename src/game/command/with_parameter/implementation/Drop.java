@@ -1,8 +1,8 @@
-package game.util.command.with_parameter.implementation;
+package game.command.with_parameter.implementation;
 
 import game.controller.CommandRunner;
 import game.model.Item;
-import game.util.command.with_parameter.CommandWithParameter;
+import game.command.with_parameter.CommandWithParameter;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

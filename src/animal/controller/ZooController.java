@@ -77,7 +77,6 @@ public class ZooController {
 
 
     //Metodi per ricerca in base a tratti specifici
-    //TODO Cambia il ritorno del metodo (e anche il parametro passato) con la generics T
     private <T extends Animal> List<T> findAnimalsByTrait(Class<T> animal) throws SpecificTraitNotFound {
         List<? extends  Animal> animals =  allAnimal.values()
                 .stream()

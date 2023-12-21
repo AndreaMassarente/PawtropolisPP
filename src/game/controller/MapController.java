@@ -5,7 +5,7 @@ import animal.model.Animal;
 import animal.exception.AnimalNotFound;
 import game.model.Item;
 import game.model.Room;
-import game.util.Direction;
+import game.model.Direction;
 
 import java.util.ArrayList;
 import java.util.List;

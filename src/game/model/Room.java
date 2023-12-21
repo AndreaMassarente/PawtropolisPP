@@ -1,7 +1,6 @@
 package game.model;
 
 import animal.model.Animal;
-import game.util.Direction;
 
 import java.util.ArrayList;
 import java.util.EnumMap;

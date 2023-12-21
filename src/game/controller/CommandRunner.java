@@ -1,10 +1,9 @@
 package game.controller;
 
 import game.model.Player;
-import game.util.command.Command;
+import game.command.Command;
 
 import java.lang.reflect.Method;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;

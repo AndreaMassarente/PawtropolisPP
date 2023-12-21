@@ -1,10 +1,10 @@
-package game.util.command.implementation;
+package game.command.implementation;
 
 
+import game.command.Command;
 import game.controller.CommandRunner;
-import game.util.command.Command;
 
-public class Look extends Command <String> {
+public class Look extends Command<String> {
     public Look(CommandRunner commandRunner){
         super(commandRunner);
     }

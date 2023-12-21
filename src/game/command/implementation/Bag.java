@@ -1,7 +1,7 @@
-package game.util.command.implementation;
+package game.command.implementation;
 
 import game.controller.CommandRunner;
-import game.util.command.Command;
+import game.command.Command;
 
 public class Bag extends Command <String> {
     public Bag(CommandRunner commandRunner){
