@@ -25,7 +25,7 @@ public class CommandRunner {
     public String executeCommandWithoutParameter(String command) {
         String msg = "";
         try {
-            String className = "game.util.command.implementation." + command.substring(0, 1).toUpperCase() + command.substring(1);
+            String className = "game.command.implementation." + command.substring(0, 1).toUpperCase() + command.substring(1);
 
             Class<? extends Command> commandClass = (Class<? extends Command>) Class.forName(className);
 
@@ -48,7 +48,7 @@ public class CommandRunner {
     public String executeCommandWithParameter(List<String> listOfString){
         String msg = "";
         try {
-            String className = "game.util.command.with_parameter.implementation." + listOfString.get(0).substring(0, 1).toUpperCase() + listOfString.get(0).substring(1);
+            String className = "game.command.with_parameter.implementation." + listOfString.get(0).substring(0, 1).toUpperCase() + listOfString.get(0).substring(1);
 
             Class<?> commandClass = Class.forName(className);
 
