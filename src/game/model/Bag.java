@@ -50,14 +50,16 @@ public class Bag {
     }
 
     public void removeItem(Item item){
-        items.remove(item);
-        currentFreeSlots += item.getRequiredSpace();
+        if(items.contains(item)){
+            items.remove(item);
+            currentFreeSlots += item.getRequiredSpace();
+        }
     }
 
     public Item getItemByString(String string) {
-        String nameToLowerCase = string.trim();
+        String name = string.trim();
         return items.stream()
-                .filter(i -> i.getName().equalsIgnoreCase(nameToLowerCase))
+                .filter(i -> i.getName().equalsIgnoreCase(name))
                 .findAny()
                 .orElse(null);
     }
