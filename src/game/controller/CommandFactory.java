@@ -10,13 +10,13 @@ import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class CommandRunner {
+public class CommandFactory {
     private final Player player;
     private final MapController mapController;
 
     private final Logger logger = Logger.getLogger(getClass().getName());
 
-    public CommandRunner(Player player) {
+    public CommandFactory(Player player) {
         this.player = player;
         mapController = new MapController();
         mapController.generateMap();
@@ -29,7 +29,7 @@ public class CommandRunner {
 
             Class<? extends Command> commandClass = (Class<? extends Command>) Class.forName(className);
 
-            Class<?>[] parameter = {CommandRunner.class};
+            Class<?>[] parameter = {CommandFactory.class};
 
             Method commandMethod = commandClass.getMethod("execute");
 
@@ -52,7 +52,7 @@ public class CommandRunner {
 
             Class<?> commandClass = Class.forName(className);
 
-            Class<?>[] parameter = {CommandRunner.class, String.class};
+            Class<?>[] parameter = {CommandFactory.class, String.class};
 
             Method commandMethod = commandClass.getMethod("execute");
 

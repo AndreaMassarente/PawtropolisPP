@@ -1,12 +1,12 @@
 package game.command.with_parameter.implementation;
 
-import game.controller.CommandRunner;
+import game.controller.CommandFactory;
 
 import game.command.with_parameter.CommandWithParameter;
 
 public class Go extends CommandWithParameter <String>{
-    public Go(CommandRunner commandRunner, String parameter){
-        super(commandRunner, parameter);
+    public Go(CommandFactory commandFactory, String parameter){
+        super(commandFactory, parameter);
     }
 
     @Override

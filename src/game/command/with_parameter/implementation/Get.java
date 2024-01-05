@@ -1,6 +1,6 @@
 package game.command.with_parameter.implementation;
 
-import game.controller.CommandRunner;
+import game.controller.CommandFactory;
 import game.model.Item;
 import game.command.with_parameter.CommandWithParameter;
 
@@ -8,8 +8,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Get extends CommandWithParameter <Void>{
-    public Get(CommandRunner commandRunner, String parameter){
-        super(commandRunner, parameter);
+    public Get(CommandFactory commandFactory, String parameter){
+        super(commandFactory, parameter);
     }
 
     @Override

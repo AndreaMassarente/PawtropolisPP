@@ -2,11 +2,11 @@ package game.command.implementation;
 
 
 import game.command.Command;
-import game.controller.CommandRunner;
+import game.controller.CommandFactory;
 
 public class Look extends Command<String> {
-    public Look(CommandRunner commandRunner){
-        super(commandRunner);
+    public Look(CommandFactory commandFactory){
+        super(commandFactory);
     }
 
     @Override

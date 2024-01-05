@@ -1,11 +1,11 @@
 package game.command.implementation;
 
-import game.controller.CommandRunner;
+import game.controller.CommandFactory;
 import game.command.Command;
 
 public class Bag extends Command <String> {
-    public Bag(CommandRunner commandRunner){
-        super(commandRunner);
+    public Bag(CommandFactory commandFactory){
+        super(commandFactory);
     }
 
     @Override
