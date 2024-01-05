@@ -26,4 +26,8 @@ public class Player {
     public Bag getBag() {
         return bag;
     }
+
+    public boolean addItemInBag(Item item){
+        return bag.addItem(item);
+    }
 }

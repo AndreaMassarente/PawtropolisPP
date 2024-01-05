@@ -1,4 +1,4 @@
 package animal.exception;
 
-public class SpecificTraitNotFound extends Throwable{
+public class SpecificTraitNotFound extends Exception{
 }

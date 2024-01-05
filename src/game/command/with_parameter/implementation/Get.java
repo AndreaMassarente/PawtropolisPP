@@ -18,7 +18,7 @@ public class Get extends CommandWithParameter <Void>{
         Logger logger = Logger.getLogger(getClass().getName());
         if (item == null) {
             logger.log(Level.WARNING,"no {0} in room", getParameter());
-        } else if (!getCommandRunner().getPlayer().getBag().addItem(item)) {
+        } else if (!getCommandRunner().getPlayer().addItemInBag(item)) {
             logger.info("no enough space in bag");
         } else {
             getCommandRunner().getMapController().getCurrentRoom().removeItem(item);

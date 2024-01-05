@@ -2,7 +2,7 @@ package animal.exception;
 
 import animal.model.Animal;
 
-public class SpeciesNotFound extends Throwable{
+public class SpeciesNotFound extends Exception{
     private final Class<? extends Animal> animal;
 
     public SpeciesNotFound(Class<? extends Animal> animal){

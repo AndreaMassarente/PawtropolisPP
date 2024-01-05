@@ -27,7 +27,7 @@ public class InputManager {
             }
         }
         else
-            return "quit";
+            return "quit"; //modifica, crea un comando apposito per il quit
         return returnString;
     }
 
@@ -38,10 +38,10 @@ public class InputManager {
         return new ArrayList<>(Arrays.asList(words));
     }
 
-    private String parseCommand(List<String> wordList){
+    private String parseCommand(List<String> wordList){ //Cambia nome, spostare questo controllo nei comandi stessi
         String msg;
         if(wordList.size() == 1){
-            msg = commandRunner.executeCommandWithoutParameter(wordList.get(0));
+            msg = commandRunner.executeCommandWithoutParameter(wordList.getFirst());
         } else if (wordList.size() > 1) {
             msg = commandRunner.executeCommandWithParameter(wordList);
         } else {
