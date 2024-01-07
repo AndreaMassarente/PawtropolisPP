@@ -1,12 +1,12 @@
 package game.controller;
 
+import game.command.ParametrizedCommand;
+import game.command.implementation.UnknownCommand;
 import game.model.Player;
 import game.command.Command;
 
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.List;
-import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,7 +23,6 @@ public class CommandFactory {
     }
 
     public Object getInstance(List<String> command) {
-        String msg = "";
         try {
             String className = "game.command.implementation." + command.getFirst().substring(0, 1).toUpperCase() + command.getFirst().substring(1);
 
@@ -31,14 +30,17 @@ public class CommandFactory {
 
             Class<?>[] parameter = {CommandFactory.class};
 
-            return commandClass.getConstructor(parameter).newInstance(this);
+            Object commandInstance =  commandClass.getConstructor(parameter).newInstance(this);
 
-        } catch (ClassNotFoundException | NoSuchMethodException exception) {
-            logger.log(Level.WARNING, "command not found");
-        }catch (InstantiationException | IllegalAccessException | InvocationTargetException exception){
-            logger.log(Level.WARNING, "Command not yet implemented");
+            if(commandInstance instanceof ParametrizedCommand){
+                command.removeFirst();
+                ((ParametrizedCommand<?>) commandInstance).setParameter(command);
+            }
+            return commandInstance;
+
+        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException exception) {
+            return new UnknownCommand(this);
         }
-        return msg;
     }
 
     public Player getPlayer() {
