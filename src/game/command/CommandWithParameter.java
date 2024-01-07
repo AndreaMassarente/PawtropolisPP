@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class CommandWithParameter <T> extends Command<T> {
-    private final List<String> parameter;
+    private List<String> parameter;
 
     protected CommandWithParameter(CommandFactory commandFactory){
         super(commandFactory);
@@ -19,5 +19,9 @@ public abstract class CommandWithParameter <T> extends Command<T> {
 
     public List<String> getParameter() {
         return parameter;
+    } //Cambiare il tipo di ritorno?
+
+    public void setParameter(List<String> parameter) {
+        this.parameter = parameter;
     }
 }
