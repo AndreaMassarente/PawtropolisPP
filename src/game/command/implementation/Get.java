@@ -1,20 +1,21 @@
-package game.command.with_parameter.implementation;
+package game.command.implementation;
 
+import game.command.CommandWithParameter;
 import game.controller.CommandFactory;
 import game.model.Item;
-import game.command.with_parameter.CommandWithParameter;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Get extends CommandWithParameter <Void>{
-    public Get(CommandFactory commandFactory, String parameter){
+public class Get extends CommandWithParameter<Void> {
+    public Get(CommandFactory commandFactory, ArrayList<String> parameter){
         super(commandFactory, parameter);
     }
 
     @Override
     public Void execute() {
-        Item item = getCommandRunner().getMapController().getCurrentRoom().getItemByString(getParameter());
+        Item item = getCommandRunner().getMapController().getCurrentRoom().getItemByString(getParameter().getFirst());
         Logger logger = Logger.getLogger(getClass().getName());
         if (item == null) {
             logger.log(Level.WARNING,"no {0} in room", getParameter());

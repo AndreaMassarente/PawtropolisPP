@@ -1,9 +1,9 @@
 package game.command.implementation;
 
-import game.controller.CommandFactory;
 import game.command.Command;
+import game.controller.CommandFactory;
 
-public class Bag extends Command <String> {
+public class Bag extends Command<String> {
     public Bag(CommandFactory commandFactory){
         super(commandFactory);
     }

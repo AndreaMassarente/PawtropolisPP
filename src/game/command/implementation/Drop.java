@@ -1,20 +1,25 @@
-package game.command.with_parameter.implementation;
+package game.command.implementation;
 
+import game.command.Command;
+import game.command.CommandWithParameter;
 import game.controller.CommandFactory;
 import game.model.Item;
-import game.command.with_parameter.CommandWithParameter;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Drop extends CommandWithParameter <Void>{
-    public Drop(CommandFactory commandFactory, String parameter){
+public class Drop extends CommandWithParameter<Void> {
+    public Drop(CommandFactory commandFactory){
+        super(commandFactory);
+    }
+    public Drop(CommandFactory commandFactory, ArrayList<String> parameter){
         super(commandFactory, parameter);
     }
 
     @Override
     public Void execute(){
-        Item item = getCommandRunner().getPlayer().getBag().getItemByString(getParameter());
+        Item item = getCommandRunner().getPlayer().getBag().getItemByString(getParameter().getFirst());
         Logger logger = Logger.getLogger(getClass().getName());
         if (item == null) {
             logger.log(Level.WARNING, "no {0} in bag", getParameter());
