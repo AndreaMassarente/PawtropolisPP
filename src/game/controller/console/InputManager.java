@@ -1,5 +1,6 @@
 package game.controller.console;
 
+import game.command.Command;
 import game.model.Player;
 import game.controller.CommandFactory;
 
@@ -22,9 +23,13 @@ public class InputManager {
             returnString = "You must enter a command";
         } else {
             wordList = splitWords(lowerCaseString);
-            returnString = parseCommand(wordList);
+            Command currentCommand = (Command) commandFactory.getInstance(wordList);
+            returnString = (String) currentCommand.execute();
         }
-        return returnString;
+        if(returnString != null)
+            return returnString;
+        else
+            return "";
     }
 
     private List<String> splitWords(String input){
@@ -32,17 +37,5 @@ public class InputManager {
         String[] words = input.split(delimiters, 2);
 
         return new ArrayList<>(Arrays.asList(words));
-    }
-
-    private String parseCommand(List<String> wordList){ //Cambia nome, spostare questo controllo nei comandi stessi
-        String msg;
-        if(wordList.size() == 1){
-            msg = commandFactory.executeCommandWithoutParameter(wordList.getFirst());
-        } else if (wordList.size() > 1) {
-            msg = commandFactory.executeCommandWithParameter(wordList);
-        } else {
-            msg = "Command not allowed!";
-        }
-        return msg;
     }
 }

@@ -22,20 +22,16 @@ public class CommandFactory {
         mapController.generateMap();
     }
 
-    public String executeCommandWithoutParameter(String command) {
+    public Object getInstance(List<String> command) {
         String msg = "";
         try {
-            String className = "game.command.implementation." + command.substring(0, 1).toUpperCase() + command.substring(1);
+            String className = "game.command.implementation." + command.getFirst().substring(0, 1).toUpperCase() + command.getFirst().substring(1);
 
             Class<? extends Command> commandClass = (Class<? extends Command>) Class.forName(className);
 
             Class<?>[] parameter = {CommandFactory.class};
 
-            Method commandMethod = commandClass.getMethod("execute");
-
-            Object commandInstance = commandClass.getConstructor(parameter).newInstance(this);
-
-            msg = (String) commandMethod.invoke(commandInstance);
+            return commandClass.getConstructor(parameter).newInstance(this);
 
         } catch (ClassNotFoundException | NoSuchMethodException exception) {
             logger.log(Level.WARNING, "command not found");
@@ -43,29 +39,6 @@ public class CommandFactory {
             logger.log(Level.WARNING, "Command not yet implemented");
         }
         return msg;
-    }
-
-    public String executeCommandWithParameter(List<String> listOfString){
-        String msg = "";
-        try {
-            String className = "game.command.with_parameter.implementation." + listOfString.getFirst().substring(0, 1).toUpperCase() + listOfString.getFirst().substring(1);
-
-            Class<?> commandClass = Class.forName(className);
-
-            Class<?>[] parameter = {CommandFactory.class, String.class};
-
-            Method commandMethod = commandClass.getMethod("execute");
-
-            Object commandInstance = commandClass.getConstructor(parameter).newInstance(this, listOfString.get(1));
-
-            msg =  (String) commandMethod.invoke(commandInstance);
-
-        } catch (ClassNotFoundException | NoSuchMethodException exception) {
-            logger.log(Level.WARNING, "command not found");
-        }catch (InstantiationException | IllegalAccessException | InvocationTargetException exception){
-            logger.log(Level.WARNING, "Command not yet implemented");
-        }
-        return Objects.requireNonNullElse(msg, "");
     }
 
     public Player getPlayer() {
