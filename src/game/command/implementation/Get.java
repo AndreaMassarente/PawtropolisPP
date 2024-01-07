@@ -17,6 +17,12 @@ public class Get extends CommandWithParameter<Void> {
     public Void execute() {
         Item item = getCommandRunner().getMapController().getCurrentRoom().getItemByString(getParameter().getFirst());
         Logger logger = Logger.getLogger(getClass().getName());
+
+        if(getParameter().size() != 1){
+            logger.log(Level.WARNING, "Incorrect parameter for get command!");
+            return null;
+        }
+
         if (item == null) {
             logger.log(Level.WARNING,"no {0} in room", getParameter());
         } else if (!getCommandRunner().getPlayer().addItemInBag(item)) {

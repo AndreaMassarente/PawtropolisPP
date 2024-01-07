@@ -21,6 +21,12 @@ public class Drop extends CommandWithParameter<Void> {
     public Void execute(){
         Item item = getCommandRunner().getPlayer().getBag().getItemByString(getParameter().getFirst());
         Logger logger = Logger.getLogger(getClass().getName());
+
+        if(getParameter().size() != 1){
+            logger.log(Level.WARNING, "Incorrect parameter for drop command!");
+            return null;
+        }
+
         if (item == null) {
             logger.log(Level.WARNING, "no {0} in bag", getParameter());
         } else  {
@@ -29,5 +35,6 @@ public class Drop extends CommandWithParameter<Void> {
         }
         return null;
     }
+
 
 }
