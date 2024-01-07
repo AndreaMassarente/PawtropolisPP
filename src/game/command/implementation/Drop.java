@@ -1,7 +1,6 @@
 package game.command.implementation;
 
-import game.command.Command;
-import game.command.CommandWithParameter;
+import game.command.ParametrizedCommand;
 import game.controller.CommandFactory;
 import game.model.Item;
 
@@ -9,7 +8,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Drop extends CommandWithParameter<Void> {
+public class Drop extends ParametrizedCommand<Void> {
     public Drop(CommandFactory commandFactory){
         super(commandFactory);
     }

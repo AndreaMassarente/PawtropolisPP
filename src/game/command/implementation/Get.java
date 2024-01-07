@@ -1,6 +1,6 @@
 package game.command.implementation;
 
-import game.command.CommandWithParameter;
+import game.command.ParametrizedCommand;
 import game.controller.CommandFactory;
 import game.model.Item;
 
@@ -8,11 +8,14 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Get extends CommandWithParameter<Void> {
+public class Get extends ParametrizedCommand<Void> {
     public Get(CommandFactory commandFactory, ArrayList<String> parameter){
         super(commandFactory, parameter);
     }
 
+    public Get(CommandFactory commandFactory){
+        super(commandFactory);
+    }
     @Override
     public Void execute() {
         Item item = getCommandRunner().getMapController().getCurrentRoom().getItemByString(getParameter().getFirst());

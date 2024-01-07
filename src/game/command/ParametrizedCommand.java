@@ -5,14 +5,14 @@ import game.controller.CommandFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class CommandWithParameter <T> extends Command<T> {
+public abstract class ParametrizedCommand<T> extends Command<T> {
     private List<String> parameter;
 
-    protected CommandWithParameter(CommandFactory commandFactory){
+    protected ParametrizedCommand(CommandFactory commandFactory){
         super(commandFactory);
         parameter = new ArrayList<>();
     }
-    protected CommandWithParameter(CommandFactory commandFactory, ArrayList<String> parameter) {
+    protected ParametrizedCommand(CommandFactory commandFactory, ArrayList<String> parameter) {
         super(commandFactory);
         this.parameter = parameter;
     }

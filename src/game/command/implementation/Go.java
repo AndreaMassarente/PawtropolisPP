@@ -1,16 +1,19 @@
 package game.command.implementation;
 
-import game.command.CommandWithParameter;
+import game.command.ParametrizedCommand;
 import game.controller.CommandFactory;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Go extends CommandWithParameter<String> {
+public class Go extends ParametrizedCommand<String> {
     public Go(CommandFactory commandFactory, ArrayList<String> parameter){
         super(commandFactory, parameter);
+    }
+
+    public Go (CommandFactory commandFactory){
+        super(commandFactory);
     }
 
     @Override
