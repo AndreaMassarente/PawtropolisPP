@@ -23,11 +23,19 @@ public class Player {
         this.healthPoints = healthPoints;
     }
 
-    public Bag getBag() {
-        return bag;
-    }
-
     public boolean addItemInBag(Item item){
         return bag.addItem(item);
+    }
+
+    public void removeItemFromBag(Item item){
+        bag.removeItem(item);
+    }
+
+    public String getElementInBag(){
+        return bag.getItemsToString();
+    }
+
+    public Item getItemInBagByString(String string){
+        return bag.getItemByString(string);
     }
 }

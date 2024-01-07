@@ -10,6 +10,6 @@ public class Bag extends Command<String> {
 
     @Override
     public String execute(){
-        return getCommandRunner().getPlayer().getBag().getItemsToString();
+        return getCommandRunner().getPlayer().getElementInBag();
     }
 }
