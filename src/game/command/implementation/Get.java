@@ -1,7 +1,7 @@
 package game.command.implementation;
 
 import game.command.ParametrizedCommand;
-import game.controller.CommandFactory;
+import game.controller.GameController;
 import game.model.Item;
 
 import java.util.ArrayList;
@@ -9,16 +9,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Get extends ParametrizedCommand<Void> {
-    public Get(CommandFactory commandFactory, ArrayList<String> parameter){
-        super(commandFactory, parameter);
+    public Get(GameController gameController, ArrayList<String> parameter){
+        super(gameController, parameter);
     }
 
-    public Get(CommandFactory commandFactory){
-        super(commandFactory);
+    public Get(GameController gameController){
+        super(gameController);
     }
     @Override
     public Void execute() {
-        Item item = getCommandRunner().getMapController().getChosenItemInRoom(getParameter().getFirst());
+        Item item = getGameController().getMapController().getChosenItemInRoom(getParameter().getFirst());
         Logger logger = Logger.getLogger(getClass().getName());
 
         if(getParameter().size() != 1){
@@ -28,10 +28,10 @@ public class Get extends ParametrizedCommand<Void> {
 
         if (item == null) {
             logger.log(Level.WARNING,"no {0} in room", getParameter());
-        } else if (!getCommandRunner().getPlayer().addItemInBag(item)) {
+        } else if (!getGameController().getPlayer().addItemInBag(item)) {
             logger.info("no enough space in bag");
         } else {
-            getCommandRunner().getMapController().removeItemInRoom(item);
+            getGameController().getMapController().removeItemInRoom(item);
         }
         return null;
     }

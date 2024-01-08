@@ -1,6 +1,6 @@
 package game.command;
 
-import game.controller.CommandFactory;
+import game.controller.GameController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,12 +8,12 @@ import java.util.List;
 public abstract class ParametrizedCommand<T> extends Command<T> {
     private List<String> parameter;
 
-    protected ParametrizedCommand(CommandFactory commandFactory){
-        super(commandFactory);
+    protected ParametrizedCommand(GameController gameController){
+        super(gameController);
         parameter = new ArrayList<>();
     }
-    protected ParametrizedCommand(CommandFactory commandFactory, List<String> parameter) {
-        super(commandFactory);
+    protected ParametrizedCommand(GameController gameController, List<String> parameter) {
+        super(gameController);
         this.parameter = parameter;
     }
 

@@ -1,17 +1,17 @@
 package game.command;
 
-import game.controller.CommandFactory;
+import game.controller.GameController;
 
 public abstract class Command <T>{
     //TODO: Valutare di rendere command un'interfaccia
-    private final CommandFactory commandFactory;
+    private final GameController gameController;
 
-    protected Command(CommandFactory commandFactory) {
-        this.commandFactory = commandFactory;
+    protected Command(GameController gameController) {
+        this.gameController = gameController;
     }
 
-    public CommandFactory getCommandRunner() {
-        return commandFactory;
+    public GameController getGameController() {
+        return gameController;
     }
 
     public abstract T execute();

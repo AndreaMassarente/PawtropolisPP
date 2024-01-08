@@ -1,7 +1,7 @@
 package game.controller.console;
 
 import game.command.Command;
-import game.model.Player;
+import game.controller.GameController;
 import game.controller.CommandFactory;
 
 import java.util.ArrayList;
@@ -10,8 +10,9 @@ import java.util.List;
 
 public class InputManager {
     private final CommandFactory commandFactory;
-    public InputManager(Player player) {
-        commandFactory = new CommandFactory(player);
+
+    public InputManager(GameController gameController) {
+        commandFactory = new CommandFactory(gameController);
     }
 
     public String readCommand(String input){
