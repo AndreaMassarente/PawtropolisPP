@@ -12,7 +12,7 @@ public abstract class ParametrizedCommand<T> extends Command<T> {
         super(commandFactory);
         parameter = new ArrayList<>();
     }
-    protected ParametrizedCommand(CommandFactory commandFactory, ArrayList<String> parameter) {
+    protected ParametrizedCommand(CommandFactory commandFactory, List<String> parameter) {
         super(commandFactory);
         this.parameter = parameter;
     }

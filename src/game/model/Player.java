@@ -31,7 +31,7 @@ public class Player {
         bag.removeItem(item);
     }
 
-    public String getElementInBag(){
+    public String geItemsInBag(){
         return bag.getItemsToString();
     }
 

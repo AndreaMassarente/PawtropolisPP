@@ -18,7 +18,7 @@ public class Get extends ParametrizedCommand<Void> {
     }
     @Override
     public Void execute() {
-        Item item = getCommandRunner().getMapController().getCurrentRoom().getItemByString(getParameter().getFirst());
+        Item item = getCommandRunner().getMapController().getChosenItemInRoom(getParameter().getFirst());
         Logger logger = Logger.getLogger(getClass().getName());
 
         if(getParameter().size() != 1){
@@ -31,7 +31,7 @@ public class Get extends ParametrizedCommand<Void> {
         } else if (!getCommandRunner().getPlayer().addItemInBag(item)) {
             logger.info("no enough space in bag");
         } else {
-            getCommandRunner().getMapController().getCurrentRoom().removeItem(item);
+            getCommandRunner().getMapController().removeItemInRoom(item);
         }
         return null;
     }

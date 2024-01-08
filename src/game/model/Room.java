@@ -98,8 +98,8 @@ public class Room {
 
     }
 
-    public Item getItemByString(String string) {
-        String nameToLowerCase = string.trim();
+    public Item getItemByString(String itemName) {
+        String nameToLowerCase = itemName.trim();
         return items.stream()
                 .filter(i -> i.getName().equalsIgnoreCase(nameToLowerCase))
                 .findAny()

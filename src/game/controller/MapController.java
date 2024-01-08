@@ -103,6 +103,22 @@ public class MapController {
         }
     }
 
+    public String lookCurrentRoom() {
+        return getCurrentRoom().look();
+    }
+
+    public void removeItemInRoom(Item item){
+        getCurrentRoom().removeItem(item);
+    }
+
+    public void addItemInRoom(Item item) {
+        getCurrentRoom().addItem(item);
+    }
+
+    public Item getChosenItemInRoom(String itemName) {
+        return getCurrentRoom().getItemByString(itemName);
+    }
+
     public String changeCurrentRoom(String direction){
         Direction currentDirection = Direction.getDirectionByString(direction);
 

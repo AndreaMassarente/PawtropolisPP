@@ -11,6 +11,6 @@ public class Look extends Command<String> {
 
     @Override
     public String execute(){
-        return getCommandRunner().getMapController().getCurrentRoom().look();
+        return getCommandRunner().getMapController().lookCurrentRoom();
     }
 }

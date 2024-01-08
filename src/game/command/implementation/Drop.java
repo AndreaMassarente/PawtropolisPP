@@ -18,7 +18,7 @@ public class Drop extends ParametrizedCommand<Void> {
 
     @Override
     public Void execute(){
-        Item item = getCommandRunner().getPlayer().getItemInBagByString(getParameter().getFirst());
+        Item item = getCommandRunner().getMapController().getChosenItemInRoom(getParameter().getFirst());
         Logger logger = Logger.getLogger(getClass().getName());
 
         if(getParameter().size() != 1){
@@ -30,7 +30,7 @@ public class Drop extends ParametrizedCommand<Void> {
             logger.log(Level.WARNING, "no {0} in bag", getParameter());
         } else  {
             getCommandRunner().getPlayer().removeItemFromBag(item);
-            getCommandRunner().getMapController().getCurrentRoom().addItem(item);
+            getCommandRunner().getMapController().addItemInRoom(item);
         }
         return null;
     }
