@@ -1,7 +1,7 @@
 package game.command.implementation;
 
 import game.command.ParametrizedCommand;
-import game.controller.GameController;
+import game.controller.CommandFactory;
 import game.model.Item;
 
 import java.util.ArrayList;
@@ -9,16 +9,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Drop extends ParametrizedCommand<Void> {
-    public Drop(GameController gameController){
-        super(gameController);
+    public Drop(CommandFactory commandFactory){
+        super(commandFactory);
     }
-    public Drop(GameController gameController, ArrayList<String> parameter){
-        super(gameController, parameter);
+    public Drop(CommandFactory commandFactory, ArrayList<String> parameter){
+        super(commandFactory, parameter);
     }
 
     @Override
     public Void execute(){
-        Item item = getGameController().getMapController().getChosenItemInRoom(getParameter().getFirst());
+        Item item = getCommandRunner().getMapController().getChosenItemInRoom(getParameter().getFirst());
         Logger logger = Logger.getLogger(getClass().getName());
 
         if(getParameter().size() != 1){
@@ -29,8 +29,8 @@ public class Drop extends ParametrizedCommand<Void> {
         if (item == null) {
             logger.log(Level.WARNING, "no {0} in bag", getParameter());
         } else  {
-            getGameController().getPlayer().removeItemFromBag(item);
-            getGameController().getMapController().addItemInRoom(item);
+            getCommandRunner().getPlayer().removeItemFromBag(item);
+            getCommandRunner().getMapController().addItemInRoom(item);
         }
         return null;
     }

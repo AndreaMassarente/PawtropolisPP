@@ -1,19 +1,19 @@
 package game.command.implementation;
 
 import game.command.ParametrizedCommand;
-import game.controller.GameController;
+import game.controller.CommandFactory;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Go extends ParametrizedCommand<String> {
-    public Go(GameController gameController, ArrayList<String> parameter){
-        super(gameController, parameter);
+    public Go(CommandFactory commandFactory, ArrayList<String> parameter){
+        super(commandFactory, parameter);
     }
 
-    public Go (GameController gameController){
-        super(gameController);
+    public Go (CommandFactory commandFactory){
+        super(commandFactory);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class Go extends ParametrizedCommand<String> {
             return null;
         }
 
-        return getGameController().getMapController().changeCurrentRoom(getParameter().getFirst());
+        return getCommandRunner().getMapController().changeCurrentRoom(getParameter().getFirst());
     }
 
 }

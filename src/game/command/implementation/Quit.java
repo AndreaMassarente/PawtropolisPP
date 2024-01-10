@@ -1,11 +1,11 @@
 package game.command.implementation;
 
 import game.command.Command;
-import game.controller.GameController;
+import game.controller.CommandFactory;
 
 public class Quit extends Command<String> {
-    public Quit(GameController gameController) {
-        super(gameController);
+    public Quit(CommandFactory commandFactory) {
+        super(commandFactory);
     }
 
     @Override

@@ -2,15 +2,15 @@ package game.command.implementation;
 
 
 import game.command.Command;
-import game.controller.GameController;
+import game.controller.CommandFactory;
 
 public class Look extends Command<String> {
-    public Look(GameController gameController){
-        super(gameController);
+    public Look(CommandFactory commandFactory){
+        super(commandFactory);
     }
 
     @Override
     public String execute(){
-        return getGameController().getMapController().lookCurrentRoom();
+        return getCommandRunner().getMapController().lookCurrentRoom();
     }
 }
