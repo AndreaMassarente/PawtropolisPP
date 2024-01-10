@@ -1,4 +1,4 @@
-import game.controllers.GameController;
+import game.controller.GameController;
 import game.model.Player;
 
 public class Application {

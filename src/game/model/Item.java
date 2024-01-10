@@ -4,12 +4,12 @@ public class Item {
     //bug fixed
     private final String name;
     private final String description;
-    private final int spaceInBag;
+    private final int requiredSpace;
 
-    public Item(String name, String description, int spaceInBag) {
+    public Item(String name, String description, int requiredSpace) {
         this.name = name;
         this.description = description;
-        this.spaceInBag = spaceInBag;
+        this.requiredSpace = requiredSpace;
     }
 
     public String getName() {
@@ -20,7 +20,7 @@ public class Item {
         return description;
     }
 
-    public int getSpaceInBag() {
-        return spaceInBag;
+    public int getRequiredSpace() {
+        return requiredSpace;
     }
 }

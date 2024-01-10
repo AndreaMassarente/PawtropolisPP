@@ -7,7 +7,9 @@ import java.util.stream.Collectors;
 public class Bag {
     private final int maxSlots;
     private int currentFreeSlots;
-    private List<Item> items;
+
+    private final List<Item> items;
+
 
     public Bag() {
         this.maxSlots = 6;
@@ -23,19 +25,12 @@ public class Bag {
         return currentFreeSlots;
     }
 
-    public List<Item> getItems() {
-        return items;
-    }
-
     public void setCurrentFreeSlots(int currentFreeSlots) {
         this.currentFreeSlots = currentFreeSlots;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
 
-    public String getItemsInBag(){
+    public String getItemsToString(){
         if(!items.isEmpty()){
             String msg = items.stream()
                     .map(i -> i.getName() +", ")
@@ -46,10 +41,10 @@ public class Bag {
             return "No items in bag";
     }
 
-    public boolean addItemInBag(Item item){
-        if(item.getSpaceInBag() <= currentFreeSlots){
+    public boolean addItem(Item item){
+        if(item.getRequiredSpace() <= currentFreeSlots){
             items.add(item);
-            currentFreeSlots -= item.getSpaceInBag();
+            currentFreeSlots -= item.getRequiredSpace();
             return true;
         }
         else{
@@ -57,21 +52,18 @@ public class Bag {
         }
     }
 
-    public void removeItemFromBag(Item item){
-        items.remove(item);
-        currentFreeSlots += item.getSpaceInBag();
+    public void removeItem(Item item){
+        if(items.contains(item)){
+            items.remove(item);
+            currentFreeSlots += item.getRequiredSpace();
+        }
     }
 
-    public Item getItemFromInput(String input) {
-        Item currentItem = null;
-        String itemName;
-        String nameToLowerCase = input.trim().toLowerCase();
-        for (Item item : items){
-            itemName = item.getName().trim().toLowerCase();
-            if(itemName.equals(nameToLowerCase)){
-                currentItem = item;
-            }
-        }
-        return currentItem;
+    public Item getItemByString(String string) {
+        String name = string.trim();
+        return items.stream()
+                .filter(i -> i.getName().equalsIgnoreCase(name))
+                .findAny()
+                .orElse(null);
     }
 }
