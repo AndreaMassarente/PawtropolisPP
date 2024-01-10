@@ -1,34 +1,26 @@
 package game.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Bag {
+    @Getter
     private final int maxSlots;
+    @Getter
+    @Setter
     private int currentFreeSlots;
 
     private final List<Item> items;
-
 
     public Bag() {
         this.maxSlots = 6;
         this.currentFreeSlots = maxSlots;
         this.items = new ArrayList<>();
     }
-
-    public int getMaxSlots() {
-        return maxSlots;
-    }
-
-    public int getCurrentFreeSlots() {
-        return currentFreeSlots;
-    }
-
-    public void setCurrentFreeSlots(int currentFreeSlots) {
-        this.currentFreeSlots = currentFreeSlots;
-    }
-
 
     public String getItemsToString(){
         if(!items.isEmpty()){

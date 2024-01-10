@@ -1,6 +1,7 @@
 package game.model;
 
 import animal.model.Animal;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -9,7 +10,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Room {
+    @Getter
     private final String name;
+    @Getter
     private final String description;
 
     private final Map<Direction, Room> connectedRooms;
@@ -22,14 +25,6 @@ public class Room {
         connectedRooms = new EnumMap<>(Direction.class);
         items = new ArrayList<>();
         npc = new ArrayList<>();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public void addItem(Item item){

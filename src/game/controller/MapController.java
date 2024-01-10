@@ -6,22 +6,22 @@ import animal.exception.AnimalNotFound;
 import game.model.Item;
 import game.model.Room;
 import game.model.Direction;
+import lombok.Getter;
+import lombok.extern.java.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+@Log
+@Getter
 public class MapController {
 
     private Room currentRoom;
 
     public MapController(){
         currentRoom = new Room("Basement", "a dark, cramped place");
-    }
-
-    public Room getCurrentRoom() {
-        return currentRoom;
     }
 
     public void generateMap(){
@@ -40,12 +40,11 @@ public class MapController {
         //Aggiunta Npc nelle stanze
         ZooController zooController = new ZooController();
         zooController.populateZoo();
-        Logger logger = Logger.getLogger(getClass().getName());
         List<Animal> animals = new ArrayList<>();
         try{
             animals = zooController.getAnimalsList();
         } catch (AnimalNotFound e){
-            logger.log(Level.WARNING,"No Npc found!!");
+            log.log(Level.WARNING,"No Npc found!!");
         }
         room2.addNpc(animals.get(0));
         room4.addNpc(animals.get(1));
