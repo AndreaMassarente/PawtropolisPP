@@ -19,7 +19,7 @@ public abstract class ParametrizedCommand<T> extends Command<T> {
 
     public List<String> getParameter() {
         return parameter;
-    } //Cambiare il tipo di ritorno?
+    }
 
     public void setParameter(List<String> parameter) {
         this.parameter = parameter;

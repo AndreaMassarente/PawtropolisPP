@@ -8,7 +8,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class InputReader {
-    // non ci interessa istanziare questa classe, ne usiamo solo i metodi static stateless
     private InputReader() {
     }
 
