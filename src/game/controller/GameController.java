@@ -3,15 +3,24 @@ package game.controller;
 import game.controller.console.InputManager;
 import game.controller.console.InputReader;
 import game.model.Player;
+import lombok.Getter;
+import lombok.extern.java.Log;
+
 import java.util.logging.Logger;
 
+@Log
 public class GameController {
+    @Getter
     private final Player player;
+    @Getter
+    private final MapController mapController;
     private final InputManager inputManager;
 
     public GameController(Player player) {
         this.player = player;
-        inputManager = new InputManager(player);
+        mapController = new MapController();
+        mapController.generateMap();
+        inputManager = new InputManager(this);
     }
 
     public void runGame() {

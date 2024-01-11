@@ -1,7 +1,10 @@
 package game.model;
 
+import lombok.Getter;
+
 import java.util.Arrays;
 
+@Getter
 public enum Direction {
     NORTH ("North"),
     SOUTH ("South"),
@@ -12,10 +15,6 @@ public enum Direction {
 
     Direction(String name) {
         this.name = name;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public static Direction getDirectionByString(String string){

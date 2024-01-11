@@ -1,17 +1,13 @@
 package game.command;
 
-import game.controller.CommandFactory;
+import game.controller.GameController;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
+@Getter
+@AllArgsConstructor
 public abstract class Command <T>{
-    private final CommandFactory commandFactory;
-
-    protected Command(CommandFactory commandFactory) {
-        this.commandFactory = commandFactory;
-    }
-
-    public CommandFactory getCommandRunner() {
-        return commandFactory;
-    }
+    private final GameController gameController;
 
     public abstract T execute();
 }

@@ -1,12 +1,15 @@
 
 package game.controller.console;
 
+import lombok.extern.java.Log;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+@Log
 public class InputReader {
     private InputReader() {
     }
@@ -17,8 +20,7 @@ public class InputReader {
         try {
             return inputReader.readLine();
         } catch (IOException e) {
-            Logger logger = Logger.getLogger(InputReader.class.getName());
-            logger.log(Level.WARNING,"Error while reading user input");
+            log.log(Level.WARNING,"Error while reading user input");
             return "";
         }
     }
