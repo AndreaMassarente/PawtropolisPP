@@ -25,9 +25,9 @@ public class CommandFactory {
 
             Class<? extends Command> commandClass = (Class<? extends Command>) Class.forName(className);
 
-            Class<?>[] parameter = {GameController.class};
+            Class<?>[] parameter = {CommandFactory.class};
 
-            Object commandInstance =  commandClass.getConstructor(parameter).newInstance(gameController);
+            Object commandInstance =  commandClass.getConstructor(parameter).newInstance(this);
 
             if(commandInstance instanceof ParametrizedCommand){
                 wordlist.removeFirst();
