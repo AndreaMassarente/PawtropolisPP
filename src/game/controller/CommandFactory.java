@@ -25,7 +25,7 @@ public class CommandFactory {
 
             Class<? extends Command> commandClass = (Class<? extends Command>) Class.forName(className);
 
-            Class<?>[] parameter = {CommandFactory.class};
+            Class<?>[] parameter = {GameController.class};
 
             Object commandInstance =  commandClass.getConstructor(parameter).newInstance(this);
 
