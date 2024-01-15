@@ -1,6 +1,5 @@
 package com.example.Pawtropolis.game.command;
 
-
 import com.example.Pawtropolis.game.controller.GameController;
 import lombok.Getter;
 import lombok.Setter;

@@ -19,13 +19,12 @@ public class GameController {
     private final MapController mapController;
     private final InputManager inputManager;
 
-    public GameController(Player player, InputManager inputManager) {
+    public GameController(Player player, InputManager inputManager, MapController mapController) {
         this.player = player;
-        mapController = new MapController();
+        this.mapController = mapController;
         mapController.generateMap();
         this.inputManager = inputManager;
     }
-
 
     public void runGame() {
         boolean gameEnded = false;

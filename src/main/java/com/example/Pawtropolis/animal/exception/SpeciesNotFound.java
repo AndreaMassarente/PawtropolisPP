@@ -1,6 +1,5 @@
 package com.example.Pawtropolis.animal.exception;
 
-
 import com.example.Pawtropolis.animal.model.Animal;
 
 public class SpeciesNotFound extends Exception{

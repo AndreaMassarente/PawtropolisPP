@@ -1,6 +1,5 @@
 package com.example.Pawtropolis.animal.model.winged;
 
-
 import com.example.Pawtropolis.animal.model.Animal;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

@@ -1,17 +1,19 @@
 package com.example.Pawtropolis.game.command.implementation;
 
-
 import com.example.Pawtropolis.game.command.ParametrizedCommand;
 import com.example.Pawtropolis.game.controller.GameController;
 import com.example.Pawtropolis.game.model.Item;
 import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
 
 @Log
-//@Component
+@Component("getCommand")
 public class GetCommand extends ParametrizedCommand<Void> {
+    @Autowired
     public GetCommand(GameController gameController, ArrayList<String> parameter){
         super(gameController, parameter);
     }

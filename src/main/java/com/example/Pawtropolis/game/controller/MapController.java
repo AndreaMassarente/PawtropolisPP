@@ -1,6 +1,5 @@
 package com.example.Pawtropolis.game.controller;
 
-
 import com.example.Pawtropolis.animal.controller.ZooController;
 import com.example.Pawtropolis.animal.exception.AnimalNotFound;
 import com.example.Pawtropolis.animal.model.Animal;
@@ -9,6 +8,7 @@ import com.example.Pawtropolis.game.model.Item;
 import com.example.Pawtropolis.game.model.Room;
 import lombok.Getter;
 import lombok.extern.java.Log;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +16,7 @@ import java.util.logging.Level;
 
 @Log
 @Getter
+@Service
 public class MapController {
 
     private Room currentRoom;
@@ -82,23 +83,23 @@ public class MapController {
     }
 
     public void connectRooms(Room entryRoom, Room exitRoom, Direction direction){
-        switch (direction){
-            case NORTH:
+        switch (direction) {
+            case NORTH -> {
                 entryRoom.addConnectedRoom(Direction.NORTH, exitRoom);
                 exitRoom.addConnectedRoom(Direction.SOUTH, entryRoom);
-                break;
-            case SOUTH:
+            }
+            case SOUTH -> {
                 entryRoom.addConnectedRoom(Direction.SOUTH, exitRoom);
                 exitRoom.addConnectedRoom(Direction.NORTH, entryRoom);
-                break;
-            case EAST:
+            }
+            case EAST -> {
                 entryRoom.addConnectedRoom(Direction.EAST, exitRoom);
                 exitRoom.addConnectedRoom(Direction.WEST, entryRoom);
-                break;
-            case WEST:
+            }
+            case WEST -> {
                 entryRoom.addConnectedRoom(Direction.WEST, exitRoom);
                 exitRoom.addConnectedRoom(Direction.EAST, entryRoom);
-                break;
+            }
         }
     }
 
@@ -132,5 +133,4 @@ public class MapController {
             return ("No room in this direction");
         }
     }
-
 }

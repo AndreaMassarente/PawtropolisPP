@@ -1,21 +1,19 @@
 package com.example.Pawtropolis.game.controller.console;
 
-
 import com.example.Pawtropolis.game.command.Command;
 import com.example.Pawtropolis.game.controller.CommandFactory;
-import com.example.Pawtropolis.game.controller.GameController;
 import org.springframework.context.annotation.Lazy;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-@Component
-public class InputManager {
 
+@Service
+public class InputManager {
     private final CommandFactory commandFactory;
-    public InputManager(@Lazy GameController gameController) {
-        commandFactory = new CommandFactory(gameController);
+    public InputManager(@Lazy CommandFactory commandFactory) {
+        this.commandFactory = commandFactory;
     }
 
     public String readCommand(String input){

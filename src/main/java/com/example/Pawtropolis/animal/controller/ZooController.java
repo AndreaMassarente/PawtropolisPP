@@ -1,7 +1,5 @@
 package com.example.Pawtropolis.animal.controller;
 
-
-
 import com.example.Pawtropolis.animal.exception.AnimalNotFound;
 import com.example.Pawtropolis.animal.exception.SpeciesNotFound;
 import com.example.Pawtropolis.animal.exception.SpecificTraitNotFound;
@@ -34,12 +32,12 @@ public class ZooController {
         addAnimal(new Tiger("Simon","Apple",4,LocalDate.of(2019,3,15),7,7,0.7));
         addAnimal(new Lion("Joffry", "Human",  6, LocalDate.of(2021,11,21), 30,30, 2 ));
     }
+
     public <T extends Animal> void addAnimal(T animal){
         allAnimal.computeIfAbsent(animal.getClass(), e -> new ArrayList<>()).add(animal);
         //Crea la lista associata alla specie animale in questione, nel caso in cui non sia già presente.
         //Se è già presente vi inserisce l'elemento
     }
-
 
     //Ritorno di tutti gli animali dello zoo
     public List<Animal> getAnimalsList() throws AnimalNotFound {
@@ -49,32 +47,34 @@ public class ZooController {
                 .toList();
     }
 
-
     //Metodi per ricerca in base all'altezza e il peso, per specie
     private <T extends Animal> List<T> findAllAnimalsOfASpecies(Class<T> animal){
         return (List<T>) allAnimal.getOrDefault(animal, Collections.emptyList());
     }
+
     public <T extends Animal> T findHighestAnimalBySpecies(Class<T> animal) throws SpeciesNotFound {
         return findAllAnimalsOfASpecies(animal).stream()
                 .max(Comparator.comparingDouble(Animal::getHeight))
                 .orElseThrow(() -> new SpeciesNotFound(animal));
     }
+
     public <T extends Animal> T findLowestAnimalBySpecies(Class<T> animal) throws SpeciesNotFound {
         return findAllAnimalsOfASpecies(animal).stream()
                 .min(Comparator.comparingDouble(Animal::getHeight))
                 .orElseThrow(() -> new SpeciesNotFound(animal));
     }
+
     public <T extends Animal> T findHeaviestAnimalBySpecies(Class<T> animal) throws SpeciesNotFound{
         return findAllAnimalsOfASpecies(animal).stream()
                 .max(Comparator.comparingDouble(Animal::getWeight))
                 .orElseThrow(() -> new SpeciesNotFound(animal));
     }
+
     public <T extends Animal> T findLightestAnimalBySpecies(Class<T> animal) throws SpeciesNotFound {
         return findAllAnimalsOfASpecies(animal).stream()
                 .min(Comparator.comparingDouble(Animal::getWeight))
                 .orElseThrow(() -> new SpeciesNotFound(animal));
     }
-
 
     //Metodi per ricerca in base a tratti specifici
     private <T extends Animal> List<T> findAnimalsByTrait(Class<T> animal) throws SpecificTraitNotFound {
@@ -89,6 +89,7 @@ public class ZooController {
 
         return (List<T>) animals;
     }
+
     public AnimalWithTail findAnimalWithLongestTail() throws SpecificTraitNotFound {
         List<? extends Animal> animalsWithTail = findAnimalsByTrait(AnimalWithTail.class);
         return animalsWithTail.stream()
@@ -96,6 +97,7 @@ public class ZooController {
                 .max(Comparator.comparingDouble(AnimalWithTail::getTailLength))
                 .orElse(null);
     }
+
     public AnimalWithWings findAnimalWithGreatestWingspan() throws SpecificTraitNotFound{
         List<? extends Animal> animalsWithWings = findAnimalsByTrait(AnimalWithWings.class);
         return animalsWithWings.stream()
@@ -104,12 +106,13 @@ public class ZooController {
                 .orElse(null);
     }
 
-
     //Metodi per rimozione animale e (nel caso) specie
     private void removeEmptySpecies(Animal animal){
         if(allAnimal.get(animal.getClass()).isEmpty())
             allAnimal.remove(animal.getClass());
-    } //Controllo se la specie è vuota in seguito a una rimozione, in caso affermativo la rimuovo
+    }
+
+    //Controllo se la specie è vuota in seguito a una rimozione, in caso affermativo la rimuovo
     private Animal findAnimalByName(String animalName){
         return allAnimal.values().stream()
                 .flatMap(Collection::stream)
@@ -117,6 +120,7 @@ public class ZooController {
                 .findFirst()
                 .orElse(null);
     }
+
     public void removesAnAnimal(String animalName) throws AnimalNotFound {
         Animal animal = findAnimalByName(animalName);
         if(animal == null)
@@ -124,7 +128,6 @@ public class ZooController {
         allAnimal.computeIfPresent(animal.getClass(),(k, v) -> {v.remove(animal); return v;});
         removeEmptySpecies(animal);
     }
-
 
     //Metodo che ritorna la lista delle speci
     public List<Class<? extends Animal>> getListOfSpecies(){

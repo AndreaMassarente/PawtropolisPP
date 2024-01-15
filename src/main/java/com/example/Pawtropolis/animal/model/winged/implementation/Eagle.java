@@ -1,6 +1,5 @@
 package com.example.Pawtropolis.animal.model.winged.implementation;
 
-
 import com.example.Pawtropolis.animal.model.winged.AnimalWithWings;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

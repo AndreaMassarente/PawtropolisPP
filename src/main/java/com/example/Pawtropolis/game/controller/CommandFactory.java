@@ -1,44 +1,43 @@
 package com.example.Pawtropolis.game.controller;
 
-
-import com.example.Pawtropolis.game.command.Command;
 import com.example.Pawtropolis.game.command.ParametrizedCommand;
 import com.example.Pawtropolis.game.command.implementation.UnknownCommand;
 import lombok.Getter;
+import lombok.NonNull;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Configuration;
 
-
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 @Getter
 @Configuration
-public class CommandFactory {
+public class CommandFactory implements ApplicationContextAware {
     private final GameController gameController;
+    private ApplicationContext context;
 
     public CommandFactory(GameController gameController) {
         this.gameController = gameController;
     }
 
-    public Object getInstance(List<String> wordlist) {
+    public void setApplicationContext(@NonNull ApplicationContext context) throws BeansException{
+        this.context = context;
+    }
+
+    public Object getInstance(List<String> wordList) {
         try {
-            String className = "com.example.SpringTest.game.command.implementation." + wordlist.getFirst().substring(0, 1).toUpperCase() + wordlist.getFirst().substring(1) +"Command";
-
-            Class<? extends Command> commandClass = (Class<? extends Command>) Class.forName(className);
-
-            Class<?>[] parameter = {GameController.class};
-
-            Object commandInstance =  commandClass.getConstructor(parameter).newInstance(gameController);
-
-            if(commandInstance instanceof ParametrizedCommand){
-                wordlist.removeFirst();
-                ((ParametrizedCommand<?>) commandInstance).setParameter(wordlist);
-            }else if (wordlist.size() > 1) {
-                return new UnknownCommand(gameController);
+            Object commandInstance = this.context.getBean(wordList.getFirst() + "Command");
+            if (commandInstance instanceof ParametrizedCommand) {
+                wordList.removeFirst();
+                ((ParametrizedCommand<?>) commandInstance).setParameter(wordList);
+            } else if (wordList.size() > 1) {
+                return this.context.getBean(UnknownCommand.class);
             }
             return commandInstance;
-
-        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException exception) {
+        }
+        catch (NoSuchBeanDefinitionException e) {
             return new UnknownCommand(gameController);
         }
     }
