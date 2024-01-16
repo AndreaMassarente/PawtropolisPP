@@ -1,6 +1,5 @@
 package com.example.Pawtropolis;
 
-import com.example.Pawtropolis.game.service.CommandFactory;
 import com.example.Pawtropolis.game.service.GameManager;
 import com.example.Pawtropolis.game.model.Player;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
