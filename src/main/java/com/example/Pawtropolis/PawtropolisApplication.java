@@ -18,7 +18,6 @@ public class PawtropolisApplication {
 		}
 		GameManager gameManager = ctx.getBean(GameManager.class);
 		ctx.getBean(Player.class).setName("Aldo");
-		ctx.getBean(CommandFactory.class).setApplicationContext(ctx);
 		gameManager.runGame();
 		ctx.close();
 	}

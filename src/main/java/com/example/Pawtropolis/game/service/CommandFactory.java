@@ -14,15 +14,9 @@ import java.util.List;
 
 @Getter
 @Configuration
-public class CommandFactory implements ApplicationContextAware {
-    private final GameManager gameManager;
-    private ApplicationContext context;
-
-    public CommandFactory(GameManager gameManager) {
-        this.gameManager = gameManager;
-    }
-
-    public void setApplicationContext(@NonNull ApplicationContext context) throws BeansException{
+public class CommandFactory{
+    private final ApplicationContext context;
+    public CommandFactory(ApplicationContext context) {
         this.context = context;
     }
 
