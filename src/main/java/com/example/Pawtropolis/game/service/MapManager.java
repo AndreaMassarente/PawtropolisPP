@@ -1,4 +1,4 @@
-package com.example.Pawtropolis.game.controller;
+package com.example.Pawtropolis.game.service;
 
 import com.example.Pawtropolis.animal.service.ZooManager;
 import com.example.Pawtropolis.animal.exception.AnimalNotFound;

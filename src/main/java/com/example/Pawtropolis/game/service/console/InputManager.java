@@ -1,13 +1,15 @@
-package com.example.Pawtropolis.game.controller.console;
+package com.example.Pawtropolis.game.service.console;
 
 import com.example.Pawtropolis.game.command.Command;
-import com.example.Pawtropolis.game.controller.CommandFactory;
+import com.example.Pawtropolis.game.service.CommandFactory;
+import lombok.NonNull;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class InputManager {
@@ -28,10 +30,7 @@ public class InputManager {
             Command currentCommand = (Command) commandFactory.getInstance(wordList);
             returnString = (String) currentCommand.execute();
         }
-        if(returnString != null)
-            return returnString;
-        else
-            return "";
+        return Objects.requireNonNullElse(returnString, "");
     }
 
     private List<String> splitWords(String input){

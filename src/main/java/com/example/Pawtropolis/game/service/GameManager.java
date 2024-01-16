@@ -1,7 +1,7 @@
-package com.example.Pawtropolis.game.controller;
+package com.example.Pawtropolis.game.service;
 
-import com.example.Pawtropolis.game.controller.console.InputManager;
-import com.example.Pawtropolis.game.controller.console.InputReader;
+import com.example.Pawtropolis.game.service.console.InputManager;
+import com.example.Pawtropolis.game.service.console.InputReader;
 import com.example.Pawtropolis.game.model.Player;
 
 import lombok.Getter;
@@ -10,12 +10,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.logging.Logger;
 
+@Getter
 @Log
 @Service
 public class GameManager {
-    @Getter
     private final Player player;
-    @Getter
     private final MapManager mapManager;
     private final InputManager inputManager;
 

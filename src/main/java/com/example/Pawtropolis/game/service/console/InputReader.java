@@ -1,5 +1,5 @@
 
-package com.example.Pawtropolis.game.controller.console;
+package com.example.Pawtropolis.game.service.console;
 
 import lombok.extern.java.Log;
 

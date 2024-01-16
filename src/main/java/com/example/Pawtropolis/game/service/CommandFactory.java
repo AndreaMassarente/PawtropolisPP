@@ -1,4 +1,4 @@
-package com.example.Pawtropolis.game.controller;
+package com.example.Pawtropolis.game.service;
 
 import com.example.Pawtropolis.game.command.ParametrizedCommand;
 import com.example.Pawtropolis.game.command.implementation.UnknownCommand;
