@@ -12,17 +12,17 @@ import java.util.logging.Logger;
 
 @Log
 @Service
-public class GameController {
+public class GameManager {
     @Getter
     private final Player player;
     @Getter
-    private final MapController mapController;
+    private final MapManager mapManager;
     private final InputManager inputManager;
 
-    public GameController(Player player, InputManager inputManager, MapController mapController) {
+    public GameManager(Player player, InputManager inputManager, MapManager mapManager) {
         this.player = player;
-        this.mapController = mapController;
-        mapController.generateMap();
+        this.mapManager = mapManager;
+        mapManager.generateMap();
         this.inputManager = inputManager;
     }
 

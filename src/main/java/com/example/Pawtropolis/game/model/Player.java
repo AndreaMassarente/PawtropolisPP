@@ -21,12 +21,6 @@ public class Player {
         healthPoints = 10;
     }
 
-    public Player(String name) {
-        this.name = name;
-        healthPoints = 10;
-        bag = new Bag();
-    }
-
     public boolean addItemInBag(Item item){
         return bag.addItem(item);
     }

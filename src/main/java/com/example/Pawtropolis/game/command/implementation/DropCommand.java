@@ -1,7 +1,7 @@
 package com.example.Pawtropolis.game.command.implementation;
 
 import com.example.Pawtropolis.game.command.ParametrizedCommand;
-import com.example.Pawtropolis.game.controller.GameController;
+import com.example.Pawtropolis.game.controller.GameManager;
 import com.example.Pawtropolis.game.model.Item;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,19 +11,19 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 
 @Log
-@Component("dropCommand")
+@Component
 public class DropCommand extends ParametrizedCommand<Void> {
-    public DropCommand(GameController gameController){
-        super(gameController);
+    public DropCommand(GameManager gameManager){
+        super(gameManager);
     }
     @Autowired
-    public DropCommand(GameController gameController, ArrayList<String> parameter){
-        super(gameController, parameter);
+    public DropCommand(GameManager gameManager, ArrayList<String> parameter){
+        super(gameManager, parameter);
     }
 
     @Override
     public Void execute(){
-        Item item = getGameController().getMapController().getChosenItemInRoom(getParameter().getFirst());
+        Item item = getGameManager().getMapManager().getChosenItemInRoom(getParameter().getFirst());
 
         if(getParameter().size() != 1){
             log.log(Level.WARNING, "Incorrect parameter for drop command!");
@@ -33,8 +33,8 @@ public class DropCommand extends ParametrizedCommand<Void> {
         if (item == null) {
             log.log(Level.WARNING, "no {0} in bag", getParameter());
         } else  {
-            getGameController().getPlayer().removeItemFromBag(item);
-            getGameController().getMapController().addItemInRoom(item);
+            getGameManager().getPlayer().removeItemFromBag(item);
+            getGameManager().getMapManager().addItemInRoom(item);
         }
         return null;
     }

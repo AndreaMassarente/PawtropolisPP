@@ -1,6 +1,6 @@
 package com.example.Pawtropolis.game.command;
 
-import com.example.Pawtropolis.game.controller.GameController;
+import com.example.Pawtropolis.game.controller.GameManager;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,12 +12,12 @@ import java.util.List;
 public abstract class ParametrizedCommand<T> extends Command<T> {
     private List<String> parameter;
 
-    protected ParametrizedCommand(GameController gameController){
-        super(gameController);
+    protected ParametrizedCommand(GameManager gameManager){
+        super(gameManager);
         parameter = new ArrayList<>();
     }
-    protected ParametrizedCommand(GameController gameController, List<String> parameter) {
-        super(gameController);
+    protected ParametrizedCommand(GameManager gameManager, List<String> parameter) {
+        super(gameManager);
         this.parameter = parameter;
     }
 }

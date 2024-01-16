@@ -1,6 +1,6 @@
 package com.example.Pawtropolis.game.controller;
 
-import com.example.Pawtropolis.animal.controller.ZooController;
+import com.example.Pawtropolis.animal.service.ZooManager;
 import com.example.Pawtropolis.animal.exception.AnimalNotFound;
 import com.example.Pawtropolis.animal.model.Animal;
 import com.example.Pawtropolis.game.model.Direction;
@@ -17,11 +17,11 @@ import java.util.logging.Level;
 @Log
 @Getter
 @Service
-public class MapController {
+public class MapManager {
 
     private Room currentRoom;
 
-    public MapController(){
+    public MapManager(){
         currentRoom = new Room("Basement", "a dark, cramped place");
     }
 
@@ -39,11 +39,11 @@ public class MapController {
         Room room12 = new Room( "Boos Room", "This place is unlike any you have encountered, the calmness that seems to be there snows you");
 
         //Aggiunta Npc nelle stanze
-        ZooController zooController = new ZooController();
-        zooController.populateZoo();
+        ZooManager zooManager = new ZooManager();
+        zooManager.populateZoo();
         List<Animal> animals = new ArrayList<>();
         try{
-            animals = zooController.getAnimalsList();
+            animals = zooManager.getAnimalsList();
         } catch (AnimalNotFound e){
             log.log(Level.WARNING,"No Npc found!!");
         }

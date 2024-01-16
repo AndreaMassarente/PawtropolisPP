@@ -1,6 +1,5 @@
 package com.example.Pawtropolis.game.model;
 
-
 import com.example.Pawtropolis.animal.model.Animal;
 import lombok.Getter;
 

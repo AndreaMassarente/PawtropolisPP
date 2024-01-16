@@ -15,11 +15,11 @@ import java.util.List;
 @Getter
 @Configuration
 public class CommandFactory implements ApplicationContextAware {
-    private final GameController gameController;
+    private final GameManager gameManager;
     private ApplicationContext context;
 
-    public CommandFactory(GameController gameController) {
-        this.gameController = gameController;
+    public CommandFactory(GameManager gameManager) {
+        this.gameManager = gameManager;
     }
 
     public void setApplicationContext(@NonNull ApplicationContext context) throws BeansException{
@@ -38,7 +38,7 @@ public class CommandFactory implements ApplicationContextAware {
             return commandInstance;
         }
         catch (NoSuchBeanDefinitionException e) {
-            return new UnknownCommand(gameController);
+            return this.context.getBean(UnknownCommand.class);
         }
     }
 }

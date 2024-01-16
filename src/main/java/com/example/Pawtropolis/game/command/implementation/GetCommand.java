@@ -1,7 +1,7 @@
 package com.example.Pawtropolis.game.command.implementation;
 
 import com.example.Pawtropolis.game.command.ParametrizedCommand;
-import com.example.Pawtropolis.game.controller.GameController;
+import com.example.Pawtropolis.game.controller.GameManager;
 import com.example.Pawtropolis.game.model.Item;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,19 +11,19 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 
 @Log
-@Component("getCommand")
+@Component
 public class GetCommand extends ParametrizedCommand<Void> {
     @Autowired
-    public GetCommand(GameController gameController, ArrayList<String> parameter){
-        super(gameController, parameter);
+    public GetCommand(GameManager gameManager, ArrayList<String> parameter){
+        super(gameManager, parameter);
     }
 
-    public GetCommand(GameController gameController){
-        super(gameController);
+    public GetCommand(GameManager gameManager){
+        super(gameManager);
     }
     @Override
     public Void execute() {
-        Item item = getGameController().getMapController().getChosenItemInRoom(getParameter().getFirst());
+        Item item = getGameManager().getMapManager().getChosenItemInRoom(getParameter().getFirst());
 
         if(getParameter().size() != 1){
             log.log(Level.WARNING, "Incorrect parameter for get command!");
@@ -32,10 +32,10 @@ public class GetCommand extends ParametrizedCommand<Void> {
 
         if (item == null) {
             log.log(Level.WARNING,"no {0} in room", getParameter());
-        } else if (!getGameController().getPlayer().addItemInBag(item)) {
+        } else if (!getGameManager().getPlayer().addItemInBag(item)) {
             log.info("no enough space in bag");
         } else {
-            getGameController().getMapController().removeItemInRoom(item);
+            getGameManager().getMapManager().removeItemInRoom(item);
         }
         return null;
     }

@@ -1,4 +1,4 @@
-package com.example.Pawtropolis.animal.controller;
+package com.example.Pawtropolis.animal.service;
 
 import com.example.Pawtropolis.animal.exception.AnimalNotFound;
 import com.example.Pawtropolis.animal.exception.SpeciesNotFound;
@@ -13,10 +13,10 @@ import com.example.Pawtropolis.animal.model.winged.implementation.Eagle;
 import java.time.LocalDate;
 import java.util.*;
 
-public class ZooController {
+public class ZooManager {
     private final Map<Class<? extends Animal>, List<Animal>> allAnimal;
 
-    public ZooController() {
+    public ZooManager() {
         this.allAnimal = new HashMap<>();
     }
 

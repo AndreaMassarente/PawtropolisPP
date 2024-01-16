@@ -1,16 +1,20 @@
 package com.example.Pawtropolis.game.command;
 
-import com.example.Pawtropolis.game.controller.GameController;
+import com.example.Pawtropolis.game.controller.GameManager;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+@Component
+@Scope("prototype")
 @Getter
 public abstract class Command <T>{
-    private final GameController gameController;
+    private final GameManager gameManager;
 
     @Autowired
-    public Command(GameController gameController) {
-        this.gameController = gameController;
+    protected Command(GameManager gameManager) {
+        this.gameManager = gameManager;
     }
 
     public abstract T execute();
