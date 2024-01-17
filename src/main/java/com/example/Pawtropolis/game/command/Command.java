@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 public abstract class Command <T>{
     private final GameManager gameManager;
 
-    @Autowired
     protected Command(GameManager gameManager) {
         this.gameManager = gameManager;
     }

@@ -3,6 +3,7 @@ package com.example.Pawtropolis.game.service;
 import com.example.Pawtropolis.game.command.ParametrizedCommand;
 import com.example.Pawtropolis.game.command.implementation.UnknownCommand;
 import lombok.Getter;
+import lombok.NonNull;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +14,8 @@ import java.util.List;
 @Configuration
 public class CommandFactory{
     private final ApplicationContext context;
-    public CommandFactory(ApplicationContext context) {
+
+    public CommandFactory(@NonNull ApplicationContext context) {
         this.context = context;
     }
 

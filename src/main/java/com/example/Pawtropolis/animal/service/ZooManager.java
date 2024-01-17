@@ -9,10 +9,12 @@ import com.example.Pawtropolis.animal.model.tailed.implementation.Lion;
 import com.example.Pawtropolis.animal.model.tailed.implementation.Tiger;
 import com.example.Pawtropolis.animal.model.winged.AnimalWithWings;
 import com.example.Pawtropolis.animal.model.winged.implementation.Eagle;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.*;
 
+@Service
 public class ZooManager {
     private final Map<Class<? extends Animal>, List<Animal>> allAnimal;
 

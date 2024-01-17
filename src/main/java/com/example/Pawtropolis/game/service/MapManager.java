@@ -8,6 +8,7 @@ import com.example.Pawtropolis.game.model.Item;
 import com.example.Pawtropolis.game.model.Room;
 import lombok.Getter;
 import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,11 +19,12 @@ import java.util.logging.Level;
 @Getter
 @Service
 public class MapManager {
-
+    private final ZooManager zooManager;
     private Room currentRoom;
 
-    public MapManager(){
+    public MapManager(ZooManager zooManager){
         currentRoom = new Room("Basement", "a dark, cramped place");
+        this.zooManager = zooManager;
     }
 
     public void generateMap(){
@@ -39,7 +41,6 @@ public class MapManager {
         Room room12 = new Room( "Boos Room", "This place is unlike any you have encountered, the calmness that seems to be there snows you");
 
         //Aggiunta Npc nelle stanze
-        ZooManager zooManager = new ZooManager();
         zooManager.populateZoo();
         List<Animal> animals = new ArrayList<>();
         try{
