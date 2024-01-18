@@ -7,11 +7,12 @@ import lombok.NonNull;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Getter
-@Configuration
+@Service
 public class CommandFactory{
     private final ApplicationContext context;
 
