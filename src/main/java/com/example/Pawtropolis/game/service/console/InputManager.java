@@ -2,8 +2,6 @@ package com.example.Pawtropolis.game.service.console;
 
 import com.example.Pawtropolis.game.command.Command;
 import com.example.Pawtropolis.game.service.CommandFactory;
-import lombok.NonNull;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,7 +12,7 @@ import java.util.Objects;
 @Service
 public class InputManager {
     private final CommandFactory commandFactory;
-    public InputManager(@Lazy CommandFactory commandFactory) {
+    public InputManager(CommandFactory commandFactory) {
         this.commandFactory = commandFactory;
     }
 
