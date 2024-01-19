@@ -4,6 +4,7 @@ import com.example.Pawtropolis.game.service.console.InputManager;
 import com.example.Pawtropolis.game.service.console.InputReader;
 import com.example.Pawtropolis.game.model.Player;
 
+import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
@@ -25,11 +26,13 @@ public class GameManager {
         this.inputManager = inputManager;
     }
 
+    @PostConstruct
     public void runGame() {
         boolean gameEnded = false;
         String input;
         String output;
         Logger logger = Logger.getLogger(getClass().getName());
+        setPlayerName();
         System.out.println("Hey " + player.getName() + "! Welcome to Pawtropolis!");
         while (!gameEnded){
             System.out.println("What do you want to do?");
@@ -43,5 +46,10 @@ public class GameManager {
                 gameEnded = true;
             }
         }
+    }
+
+    public void setPlayerName(){
+        System.out.println("Hi! What's your name?");
+        player.setName(InputReader.readString());
     }
 }

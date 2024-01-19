@@ -1,7 +1,5 @@
 package com.example.Pawtropolis;
 
-import com.example.Pawtropolis.game.service.GameManager;
-import com.example.Pawtropolis.game.model.Player;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -12,9 +10,6 @@ public class PawtropolisApplication {
 
 	public static void main(String[] args) {
 		AbstractApplicationContext ctx = new AnnotationConfigApplicationContext(PawtropolisApplication.class);
-		GameManager gameManager = ctx.getBean(GameManager.class);
-		ctx.getBean(Player.class).setName("Aldo");
-		gameManager.runGame();
 		ctx.close();
 	}
 }
