@@ -29,7 +29,6 @@ public class GameManager {
         boolean gameEnded = false;
         String input;
         String output;
-        Logger logger = Logger.getLogger(getClass().getName());
         setPlayerName();
         System.out.println("Hey " + player.getName() + "! Welcome to Pawtropolis!");
         while (!gameEnded){
@@ -40,7 +39,7 @@ public class GameManager {
             if(!output.trim().equalsIgnoreCase("quit"))
                 System.out.println(output);
             else{
-                logger.info(output);
+                log.info(output);
                 gameEnded = true;
             }
         }
