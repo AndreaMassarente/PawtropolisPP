@@ -25,7 +25,6 @@ public class GameManager {
         this.inputManager = inputManager;
     }
 
-    @PostConstruct
     public void runGame() {
         boolean gameEnded = false;
         String input;

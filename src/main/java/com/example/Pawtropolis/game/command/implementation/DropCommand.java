@@ -23,7 +23,7 @@ public class DropCommand extends ParametrizedCommand<Void> {
 
     @Override
     public Void execute(){
-        Item item = getGameManager().getMapManager().getChosenItemInRoom(getParameter().getFirst());
+        Item item = getGameManager().getPlayer().getItemInBagByString(getParameter().getFirst());
 
         if(getParameter().size() != 1){
             log.log(Level.WARNING, "Incorrect parameter for drop command!");
