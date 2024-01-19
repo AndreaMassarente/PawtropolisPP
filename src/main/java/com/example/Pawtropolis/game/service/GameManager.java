@@ -22,7 +22,6 @@ public class GameManager {
     public GameManager(Player player, InputManager inputManager, MapManager mapManager) {
         this.player = player;
         this.mapManager = mapManager;
-        mapManager.generateMap();
         this.inputManager = inputManager;
     }
 

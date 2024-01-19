@@ -6,6 +6,7 @@ import com.example.Pawtropolis.animal.model.Animal;
 import com.example.Pawtropolis.game.model.Direction;
 import com.example.Pawtropolis.game.model.Item;
 import com.example.Pawtropolis.game.model.Room;
+import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class MapManager {
         this.zooManager = zooManager;
     }
 
+    @PostConstruct
     public void generateMap(){
         Room room2 = new Room("Thermal Baths", "a warm place, there is a lot of fog and hot water gaiser");
         Room room3 = new Room("Cave", "a dark cave, you hear a lot of chilling noises");
