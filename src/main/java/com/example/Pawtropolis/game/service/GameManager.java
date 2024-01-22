@@ -5,7 +5,6 @@ import com.example.Pawtropolis.game.service.console.InputHandler;
 import com.example.Pawtropolis.game.service.console.InputReader;
 import com.example.Pawtropolis.game.model.Player;
 
-import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
@@ -36,7 +35,7 @@ public class GameManager {
             System.out.println("What do you want to do?");
             System.out.print(">");
             input = InputReader.readString();
-            List<String> readCommand = InputHandler.readCommand(input);
+            List<String> readCommand = InputHandler.processInput(input);
             Command currentCommand = (Command) commandFactory.getInstance(readCommand);
             output = (String) currentCommand.execute();
 

@@ -13,7 +13,7 @@ public class InputHandler {
     private InputHandler() {
     }
 
-    public static List<String> readCommand(String input){
+    public static List<String> processInput(String input){
         List<String> wordList = null;
         String lowerCaseString = input.trim().toLowerCase();
 
