@@ -14,11 +14,11 @@ import java.util.logging.Level;
 @Component
 public class GetCommand extends ParametrizedCommand<Void> {
     @Autowired
-    public GetCommand(GameManager gameManager, ArrayList<String> parameter){
+    private GetCommand(GameManager gameManager, ArrayList<String> parameter){
         super(gameManager, parameter);
     }
 
-    public GetCommand(GameManager gameManager){
+    private GetCommand(GameManager gameManager){
         super(gameManager);
     }
     @Override

@@ -1,6 +1,7 @@
 package com.example.Pawtropolis.game.service;
 
-import com.example.Pawtropolis.game.service.console.InputManager;
+import com.example.Pawtropolis.game.command.Command;
+import com.example.Pawtropolis.game.service.console.InputHandler;
 import com.example.Pawtropolis.game.service.console.InputReader;
 import com.example.Pawtropolis.game.model.Player;
 
@@ -9,7 +10,7 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 
-import java.util.logging.Logger;
+import java.util.List;
 
 @Getter
 @Log
@@ -17,12 +18,12 @@ import java.util.logging.Logger;
 public class GameManager {
     private final Player player;
     private final MapManager mapManager;
-    private final InputManager inputManager;
+    private final CommandFactory commandFactory;
 
-    public GameManager(Player player, InputManager inputManager, MapManager mapManager) {
+    private GameManager(Player player, CommandFactory commandFactory, MapManager mapManager) {
         this.player = player;
         this.mapManager = mapManager;
-        this.inputManager = inputManager;
+        this.commandFactory = commandFactory;
     }
 
     public void runGame() {
@@ -35,7 +36,10 @@ public class GameManager {
             System.out.println("What do you want to do?");
             System.out.print(">");
             input = InputReader.readString();
-            output = inputManager.readCommand(input);
+            List<String> readCommand = InputHandler.readCommand(input);
+            Command currentCommand = (Command) commandFactory.getInstance(readCommand);
+            output = (String) currentCommand.execute();
+
             if(!output.trim().equalsIgnoreCase("quit"))
                 System.out.println(output);
             else{

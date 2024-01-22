@@ -10,7 +10,7 @@ import java.util.logging.Level;
 @Log
 @Component
 public class UnknownCommand extends Command {
-    public UnknownCommand(GameManager gameManager){
+    private UnknownCommand(GameManager gameManager){
         super(gameManager);
     }
 

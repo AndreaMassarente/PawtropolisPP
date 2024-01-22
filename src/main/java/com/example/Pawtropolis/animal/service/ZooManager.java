@@ -18,7 +18,7 @@ import java.util.*;
 public class ZooManager {
     private final Map<Class<? extends Animal>, List<Animal>> allAnimal;
 
-    public ZooManager() {
+    private ZooManager() {
         this.allAnimal = new HashMap<>();
     }
 

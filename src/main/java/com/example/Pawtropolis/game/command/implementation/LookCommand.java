@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class LookCommand extends Command<String> {
-    public LookCommand(GameManager gameManager){
+    private LookCommand(GameManager gameManager){
         super(gameManager);
     }
 

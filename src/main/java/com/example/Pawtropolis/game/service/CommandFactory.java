@@ -15,7 +15,7 @@ import java.util.List;
 public class CommandFactory{
     private final ApplicationContext context;
 
-    public CommandFactory(@NonNull ApplicationContext context) {
+    private CommandFactory(@NonNull ApplicationContext context) {
         this.context = context;
     }
 

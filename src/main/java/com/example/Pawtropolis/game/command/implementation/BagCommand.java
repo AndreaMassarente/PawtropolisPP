@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class BagCommand extends Command<String> {
-    public BagCommand(GameManager gameManager){
+    private BagCommand(GameManager gameManager){
         super(gameManager);
     }
 

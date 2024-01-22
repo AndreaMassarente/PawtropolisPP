@@ -13,11 +13,11 @@ import java.util.logging.Level;
 @Component
 public class GoCommand extends ParametrizedCommand<String> {
     @Autowired
-    public GoCommand(GameManager gameManager, ArrayList<String> parameter){
+    private GoCommand(GameManager gameManager, ArrayList<String> parameter){
         super(gameManager, parameter);
     }
 
-    public GoCommand(GameManager gameManager){
+    private GoCommand(GameManager gameManager){
         super(gameManager);
     }
 

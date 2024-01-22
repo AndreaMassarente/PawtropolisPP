@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class QuitCommand extends Command<String> {
-    public QuitCommand(GameManager gameManager) {
+    private QuitCommand(GameManager gameManager) {
         super(gameManager);
     }
 

@@ -2,12 +2,11 @@ package com.example.Pawtropolis.game.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-@Component
+
 public class Bag {
     @Getter
     private final int maxSlots;

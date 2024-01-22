@@ -13,11 +13,11 @@ import java.util.logging.Level;
 @Log
 @Component
 public class DropCommand extends ParametrizedCommand<Void> {
-    public DropCommand(GameManager gameManager){
+    private DropCommand(GameManager gameManager){
         super(gameManager);
     }
     @Autowired
-    public DropCommand(GameManager gameManager, ArrayList<String> parameter){
+    private DropCommand(GameManager gameManager, ArrayList<String> parameter){
         super(gameManager, parameter);
     }
 

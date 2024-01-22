@@ -2,7 +2,6 @@ package com.example.Pawtropolis.game.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,9 +14,8 @@ public class Player {
     private int healthPoints;
     private final Bag bag;
 
-    @Autowired
-    public Player(Bag bag){
-        this.bag = bag;
+    private Player(){
+        this.bag = new Bag();
         healthPoints = 10;
     }
 
