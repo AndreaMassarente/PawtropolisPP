@@ -39,11 +39,13 @@ public class GameManager {
             Command currentCommand = (Command) commandFactory.getInstance(readCommand);
             output = (String) currentCommand.execute();
 
-            if(!output.trim().equalsIgnoreCase("quit"))
-                System.out.println(output);
-            else{
-                log.info(output);
-                gameEnded = true;
+            if (output != null) {
+                if (!output.trim().equalsIgnoreCase("quit"))
+                    System.out.println(output);
+                else {
+                    log.info(output);
+                    gameEnded = true;
+                }
             }
         }
     }
