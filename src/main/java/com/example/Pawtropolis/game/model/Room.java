@@ -3,6 +3,7 @@ package com.example.Pawtropolis.game.model;
 import com.example.Pawtropolis.animal.model.Animal;
 import lombok.Getter;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
@@ -96,10 +97,18 @@ public class Room {
 
     public String look(){
         return "You are in " + getName() +  "\n" + getDescription() + "\nItems:\n" + getItemsNames()
-                +"\nNCP:\n" + getNpcNames() + "\n" + "Connected rooms: \n" + getConnectedRoomsNames() + "\n";
-
+                +"\nNCP:\n" + getNpcNames() + "\n" + "Connected rooms: \n" + getConnectedRoomsNames() + "\n"
+                + getAvailableDoors();
     }
+    public String getAvailableDoors() {
+        StringBuilder doorsDescription = new StringBuilder();
+        doors.forEach((direction, door) -> {
+            String doorStatus = door.isOpen() ? "open" : "closed";
+            doorsDescription.append(direction).append(" door: ").append(doorStatus).append("\n");
+        });
 
+        return doorsDescription.toString();
+    }
     public Item getItemByString(String itemName) {
         String nameToLowerCase = itemName.trim();
         return items.stream()
