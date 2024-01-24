@@ -72,6 +72,9 @@ public class MapManager {
         room11.addItem(new Item("Gun", "+20 sp.atk, +20 sp.def", 2));
         currentRoom.addItem(new Item("Key", "A simple key", 1));
         currentRoom.addItem(new Item("Gun", "+20 sp.atk, +20 sp.def", 2));
+        room4.addItem(new Item("Black key", "A strange key", 2));
+        room9.addItem(new Item("Key", "A simple key", 1));
+        room5.addItem(new Item("Key", "A simple key", 1));
 
         Door redDoor = new Door(false,"key");
         Door yellowDoor = new Door(true,"key");
@@ -80,9 +83,9 @@ public class MapManager {
         Door greenDoor = new Door(true,"key");
         Door brownDoor = new Door(true,"key");
         Door pinkDoor = new Door(true,"key");
-        Door greyDoor = new Door(true,"key");
+        Door greyDoor = new Door(false,"key");
         Door whiteDoor = new Door(true,"key");
-        Door blackDoor = new Door(true,"key");
+        Door blackDoor = new Door(false,"Black key");
 
 
 
