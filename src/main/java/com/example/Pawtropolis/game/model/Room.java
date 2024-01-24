@@ -16,6 +16,7 @@ public class Room {
     private final String description;
 
     private final Map<Direction, Room> connectedRooms;
+    private Map<Direction, Door> doors;
     private final List<Item> items;
     private final List<Animal> npc;
 
@@ -25,6 +26,7 @@ public class Room {
         connectedRooms = new EnumMap<>(Direction.class);
         items = new ArrayList<>();
         npc = new ArrayList<>();
+        this.doors = new EnumMap<>(Direction.class);
     }
 
     public void addItem(Item item){
@@ -45,8 +47,13 @@ public class Room {
         return connectedRooms.get(direction);
     }
 
-    public void addConnectedRoom(Direction direction, Room room){
+    public void addConnectedRoom(Direction direction, Room room, Door door){
         connectedRooms.put(direction, room);
+        doors.put(direction, door);
+    }
+
+    public Door getDoor(Direction direction){
+        return doors.get(direction);
     }
 
     public String getNpcNames() {

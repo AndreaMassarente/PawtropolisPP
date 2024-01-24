@@ -27,7 +27,7 @@ public class GoCommand extends ParametrizedCommand<String> {
             log.log(Level.WARNING, "Incorrect parameter for go command!");
             return null;
         }
-        return getGameManager().getMapManager().changeCurrentRoom(getParameter().getFirst());
+        return getGameManager().getMapManager().changeCurrentRoom(getParameter().getFirst(), getGameManager().getPlayer());
     }
 
 }

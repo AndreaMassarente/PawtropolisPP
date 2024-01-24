@@ -34,4 +34,8 @@ public class Player {
     public Item getItemInBagByString(String string){
         return bag.getItemByString(string);
     }
+
+    public boolean isPresentInBag(String itemName){
+        return bag.isPresent(itemName);
+    }
 }

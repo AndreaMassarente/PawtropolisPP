@@ -3,9 +3,7 @@ package com.example.Pawtropolis.game.service;
 import com.example.Pawtropolis.animal.service.ZooManager;
 import com.example.Pawtropolis.animal.exception.AnimalNotFound;
 import com.example.Pawtropolis.animal.model.Animal;
-import com.example.Pawtropolis.game.model.Direction;
-import com.example.Pawtropolis.game.model.Item;
-import com.example.Pawtropolis.game.model.Room;
+import com.example.Pawtropolis.game.model.*;
 import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import lombok.extern.java.Log;
@@ -14,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 
 @Log
@@ -71,37 +70,52 @@ public class MapManager {
         room10.addItem(new Item("Armor", "+50 def, -20 speed", 2));
         room11.addItem(new Item("Bow", "+10 sp.atk, +10speed", 1));
         room11.addItem(new Item("Gun", "+20 sp.atk, +20 sp.def", 2));
+        currentRoom.addItem(new Item("Key", "A simple key", 1));
+        currentRoom.addItem(new Item("Gun", "+20 sp.atk, +20 sp.def", 2));
+
+        Door redDoor = new Door(false,"key");
+        Door yellowDoor = new Door(true,"key");
+        Door orangeDoor = new Door(true,"key");
+        Door blueDoor = new Door(true,"key");
+        Door greenDoor = new Door(true,"key");
+        Door brownDoor = new Door(true,"key");
+        Door pinkDoor = new Door(true,"key");
+        Door greyDoor = new Door(true,"key");
+        Door whiteDoor = new Door(true,"key");
+        Door blackDoor = new Door(true,"key");
+
+
 
         //Collegamento delle stanze
-        connectRooms(currentRoom, room3, Direction.WEST);
-        connectRooms(currentRoom, room6, Direction.EAST);
-        connectRooms(currentRoom, room2, Direction.SOUTH);
-        connectRooms(room3, room4, Direction.NORTH);
-        connectRooms(room3, room5, Direction.WEST);
-        connectRooms(room6, room8, Direction.NORTH);
-        connectRooms(room8, room9, Direction.NORTH);
-        connectRooms(room9, room10, Direction.EAST);
-        connectRooms(room10, room11, Direction.EAST);
-        connectRooms(room11, room12, Direction.SOUTH);
+        connectRooms(currentRoom, room3, Direction.WEST, redDoor);
+        connectRooms(currentRoom, room6, Direction.EAST, yellowDoor);
+        connectRooms(currentRoom, room2, Direction.SOUTH, orangeDoor);
+        connectRooms(room3, room4, Direction.NORTH, blueDoor);
+        connectRooms(room3, room5, Direction.WEST, greenDoor);
+        connectRooms(room6, room8, Direction.NORTH, brownDoor);
+        connectRooms(room8, room9, Direction.NORTH, pinkDoor);
+        connectRooms(room9, room10, Direction.EAST, greyDoor);
+        connectRooms(room10, room11, Direction.EAST, whiteDoor);
+        connectRooms(room11, room12, Direction.SOUTH, blackDoor);
     }
 
-    public void connectRooms(Room entryRoom, Room exitRoom, Direction direction){
+    public void connectRooms(Room entryRoom, Room exitRoom, Direction direction, Door door){
         switch (direction) {
             case NORTH -> {
-                entryRoom.addConnectedRoom(Direction.NORTH, exitRoom);
-                exitRoom.addConnectedRoom(Direction.SOUTH, entryRoom);
+                entryRoom.addConnectedRoom(Direction.NORTH, exitRoom, door);
+                exitRoom.addConnectedRoom(Direction.SOUTH, entryRoom, door);
             }
             case SOUTH -> {
-                entryRoom.addConnectedRoom(Direction.SOUTH, exitRoom);
-                exitRoom.addConnectedRoom(Direction.NORTH, entryRoom);
+                entryRoom.addConnectedRoom(Direction.SOUTH, exitRoom, door);
+                exitRoom.addConnectedRoom(Direction.NORTH, entryRoom, door);
             }
             case EAST -> {
-                entryRoom.addConnectedRoom(Direction.EAST, exitRoom);
-                exitRoom.addConnectedRoom(Direction.WEST, entryRoom);
+                entryRoom.addConnectedRoom(Direction.EAST, exitRoom, door);
+                exitRoom.addConnectedRoom(Direction.WEST, entryRoom, door);
             }
             case WEST -> {
-                entryRoom.addConnectedRoom(Direction.WEST, exitRoom);
-                exitRoom.addConnectedRoom(Direction.EAST, entryRoom);
+                entryRoom.addConnectedRoom(Direction.WEST, exitRoom, door);
+                exitRoom.addConnectedRoom(Direction.EAST, entryRoom, door);
             }
         }
     }
@@ -122,18 +136,57 @@ public class MapManager {
         return getCurrentRoom().getItemByString(itemName);
     }
 
-    public String changeCurrentRoom(String direction){
+    public String changeCurrentRoom(String direction, Player player){
         Direction currentDirection = Direction.getDirectionByString(direction);
 
         if (currentDirection == null)
             return ("Incorrect direction");
 
         else if(currentRoom.getConnectedRoomByDirection(currentDirection) != null){
-            currentRoom = currentRoom.getConnectedRoomByDirection(currentDirection);
-            return (getCurrentRoom().look());
+            if(openDoor(Direction.getDirectionByString(direction), player)){
+                currentRoom = currentRoom.getConnectedRoomByDirection(currentDirection);
+                return (getCurrentRoom().look());
+            }else {
+                return null;
+            }
         }
         else{
             return ("No room in this direction");
+        }
+    }
+
+    public boolean openDoor(Direction direction, Player player) {
+        Door door = currentRoom.getDoor(direction);
+        Scanner scanner = new Scanner(System.in);
+        if (!door.isOpen()) {
+            System.out.println("The door is locked. Would you like to use an item to unlock it? Y/N");
+            String answer = scanner.nextLine();
+            if (answer.equalsIgnoreCase("Y")) {
+                return unlockDoor(direction, player);
+            } else if (answer.equalsIgnoreCase("N")) {
+                return false;
+            } else {
+                System.out.println("You must answer Y or N");
+                return false;
+            }
+        } else {
+            return true;
+        }
+    }
+
+    public boolean unlockDoor(Direction direction, Player player) {
+        Door door = currentRoom.getDoor(direction);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Type the name of the chosen item");
+        String itemName = scanner.nextLine();
+        if (player.isPresentInBag(itemName) && door.unlock(itemName)) {
+            System.out.println("You unlocked the door!");
+            Item removedItem = player.getItemInBagByString(itemName);
+            player.removeItemFromBag(removedItem);
+            return true;
+        } else {
+            System.out.println("You need " + door.getRequiredKey() + " to open the door");
+            return false;
         }
     }
 }

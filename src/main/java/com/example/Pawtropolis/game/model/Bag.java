@@ -58,4 +58,9 @@ public class Bag {
                 .findAny()
                 .orElse(null);
     }
+
+    public boolean isPresent(String itemName) {
+        return items.stream()
+                .anyMatch(item -> item.getName().equalsIgnoreCase(itemName));
+    }
 }
